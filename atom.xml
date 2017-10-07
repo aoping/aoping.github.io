@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-10-06T13:45:10.542Z</updated>
+  <updated>2017-10-07T01:30:25.554Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代理软件</title>
+    <link href="https://aoping.github.io/2017/10/07/software-proxy/"/>
+    <id>https://aoping.github.io/2017/10/07/software-proxy/</id>
+    <published>2017-10-07T01:22:15.000Z</published>
+    <updated>2017-10-07T01:30:25.554Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>ngrok</li></ul><p>地址： <a href="https://www.ngrok.cc/" target="_blank" rel="external">https://www.ngrok.cc/</a></p><ul><li>tunnel.mobi</li></ul><ul><li>utralhook</li></ul><ul><li>qq浏览器 微信插件（only mac and win）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;ngrok&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;地址： &lt;a href=&quot;https://www.ngrok.cc/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.ngrok.cc/&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tunne
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>software</title>
