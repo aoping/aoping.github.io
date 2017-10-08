@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-10-07T02:40:10.580Z</updated>
+  <updated>2017-10-08T03:42:41.121Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>weex</title>
+    <link href="https://aoping.github.io/2017/10/08/weex/"/>
+    <id>https://aoping.github.io/2017/10/08/weex/</id>
+    <published>2017-10-08T03:35:28.000Z</published>
+    <updated>2017-10-08T03:42:41.121Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h2><p>weex-ui</p><p>bui</p><a id="more"></a><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>nat</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;ui&quot;&gt;&lt;a href=&quot;#ui&quot; class=&quot;headerlink&quot; title=&quot;ui&quot;&gt;&lt;/a&gt;ui&lt;/h2&gt;&lt;p&gt;weex-ui&lt;/p&gt;
+&lt;p&gt;bui&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>倍速播放器</title>
     <link href="https://aoping.github.io/2017/10/07/software-player/"/>
     <id>https://aoping.github.io/2017/10/07/software-player/</id>
     <published>2017-10-07T02:03:41.000Z</published>
-    <updated>2017-10-07T02:40:10.580Z</updated>
+    <updated>2017-10-07T02:41:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>相信大家在看视频学习的时候一定有多倍速播放的需求，今天就给大家推荐几款播放器</p><a id="more"></a><h2 id="potplayer"><a href="#potplayer" class="headerlink" title="potplayer"></a>potplayer</h2><p>windows下推荐使用</p><h2 id="smplayer"><a href="#smplayer" class="headerlink" title="smplayer"></a>smplayer</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Linux下推荐使用</p><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a href="http://www.smplayer.info/en/downloads" target="_blank" rel="external">http://www.smplayer.info/en/downloads</a></p><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>不要散乱地记忆smplayer的快捷键. 要分类别的来记忆快捷键: 主要有audio, play, video:</p><p>audio, 是设置声音的快捷键:<br>9, 0, 分别增加/减小音量, m表示mute.</p><p>play: 设置设置放映的快捷键:<br>主要有: left/right: 10s为单位; up/down: 1min; pageup/pgdn: 10min ; 播放速度的快捷键: [, ], {, }, 分别是正负0.1 , 50%和2倍. 暂停: space, 如果创建了playlists, 可以用&lt; 和 &gt; 来进行上一首/下一首切换.</p><p>video, 是指窗口大小/视频本身的大小 设置:<br>窗口大小: f: 全屏, ctrl+1, 100%, ctrl+2, 200%, ctrl+d则是双倍和原始大小进行切换. (这个ctrl_1, 是一个固定大小, 就是不管你把窗口拖放到什么尺寸, 只要按crl+1, 都会显示到那个固定的大小)<br>视频本身的大小: e: 放大, w缩小. e是指expand, 扩展, 放大, w: 为什么是缩小呢? 因为根据&gt; &lt;, (), [], {} , 这些成对的, 紧挨着的按键的布局来看. 左边的表示缩小, 右边的表示放大.</p><p>s: 是截屏screenshots.</p><p>不定期更新～～</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>播放器smplayer的各种键盘快捷键 <a href="http://www.cnblogs.com/bkylee/p/6795295.html" target="_blank" rel="external">http://www.cnblogs.com/bkylee/p/6795295.html</a></p>]]></content>
     
@@ -111,15 +130,15 @@
     <link href="https://aoping.github.io/2017/10/02/tuition-hexo/"/>
     <id>https://aoping.github.io/2017/10/02/tuition-hexo/</id>
     <published>2017-10-02T14:26:56.000Z</published>
-    <updated>2017-10-07T02:14:45.735Z</updated>
+    <updated>2017-10-07T02:42:20.035Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h1><p>官网地址<br><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/index.html</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;搭建博客&quot;&gt;&lt;a href=&quot;#搭建博客&quot; class=&quot;headerlink&quot; title=&quot;搭建博客&quot;&gt;&lt;/a&gt;搭建博客&lt;/h1&gt;
+        &lt;h1 id=&quot;搭建博客&quot;&gt;&lt;a href=&quot;#搭建博客&quot; class=&quot;headerlink&quot; title=&quot;搭建博客&quot;&gt;&lt;/a&gt;搭建博客&lt;/h1&gt;&lt;p&gt;官网地址&lt;br&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/index.html&quot; target
       
     
     </summary>
