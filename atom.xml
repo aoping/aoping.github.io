@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-10-14T14:45:14.828Z</updated>
+  <updated>2017-10-15T01:43:25.931Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu使用技巧</title>
+    <link href="https://aoping.github.io/2017/10/15/ubuntu-keyword/"/>
+    <id>https://aoping.github.io/2017/10/15/ubuntu-keyword/</id>
+    <published>2017-10-15T01:25:37.000Z</published>
+    <updated>2017-10-15T01:43:25.931Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>分屏显示</li></ul><p>ctrl+Windowskey(Super key)+上下左右</p><ul><li>多窗口分屏式终端–Terminatgongzuoquor</li></ul><p>可在同一屏打开多个窗口，安装如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install terminator</div></pre></td></tr></table></figure></p><p><img src="1.png" alt="1.png"></p><ul><li>显示桌面/开启工作区<br>依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;分屏显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ctrl+Windowskey(Super key)+上下左右&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多窗口分屏式终端–Terminatgongzuoquor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可在同一屏打开多个窗口，安装如下&lt;br&gt;&lt;fig
+      
+    
+    </summary>
+    
+      <category term="ubuntu" scheme="https://aoping.github.io/categories/ubuntu/"/>
+    
+    
+      <category term="ubuntu 使用技巧" scheme="https://aoping.github.io/tags/ubuntu-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>express知识点</title>
+    <link href="https://aoping.github.io/2017/10/15/node-express/"/>
+    <id>https://aoping.github.io/2017/10/15/node-express/</id>
+    <published>2017-10-15T00:50:13.000Z</published>
+    <updated>2017-10-15T01:42:12.304Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装express"><a href="#安装express" class="headerlink" title="安装express"></a>安装express</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express -g</div></pre></td></tr></table></figure><h2 id="express生成器"><a href="#express生成器" class="headerlink" title="express生成器"></a>express生成器</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express-generator -g</div></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express -h // 帮助</div><div class="line">express myapp //生成app</div></pre></td></tr></table></figure><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd myapp</div><div class="line">npm i</div></pre></td></tr></table></figure><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DEBUG=myapp npm start  // mac or linux</div><div class="line">set DEBUG=myapp &amp; npm start // windows</div></pre></td></tr></table></figure><h2 id="express架构"><a href="#express架构" class="headerlink" title="express架构"></a>express架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;)</div><div class="line">var app = express()</div><div class="line"></div><div class="line">// view engine setup</div><div class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;安装express&quot;&gt;&lt;a href=&quot;#安装express&quot; class=&quot;headerlink&quot; title=&quot;安装express&quot;&gt;&lt;/a&gt;安装express&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;t
+      
+    
+    </summary>
+    
+      <category term="node" scheme="https://aoping.github.io/categories/node/"/>
+    
+    
+      <category term="node express 学习笔记" scheme="https://aoping.github.io/tags/node-express-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>es6-async</title>
@@ -227,10 +284,10 @@
   
   <entry>
     <title>ubuntu常用软件安装</title>
-    <link href="https://aoping.github.io/2017/10/06/linux/"/>
-    <id>https://aoping.github.io/2017/10/06/linux/</id>
+    <link href="https://aoping.github.io/2017/10/06/ubuntu-software/"/>
+    <id>https://aoping.github.io/2017/10/06/ubuntu-software/</id>
     <published>2017-10-06T10:02:45.000Z</published>
-    <updated>2017-10-14T15:20:48.190Z</updated>
+    <updated>2017-10-15T01:42:12.304Z</updated>
     
     <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/shidaping/article/details/52218278" target="_blank" rel="external">http://blog.csdn.net/shidaping/article/details/52218278</a><br><a href="http://blog.csdn.net/tao_627/article/details/52635691" target="_blank" rel="external">http://blog.csdn.net/tao_627/article/details/52635691</a></p><p>安装微信<br><a href="http://blog.csdn.net/ch593030323/article/details/53571807" target="_blank" rel="external">http://blog.csdn.net/ch593030323/article/details/53571807</a></p><a id="more"></a><p>安装迅雷<br><a href="http://blog.csdn.net/zhuyucheng123/article/details/51147550" target="_blank" rel="external">http://blog.csdn.net/zhuyucheng123/article/details/51147550</a></p><p>安装mongodb<br><a href="http://blog.csdn.net/flyfish111222/article/details/51886787" target="_blank" rel="external">http://blog.csdn.net/flyfish111222/article/details/51886787</a><br><a href="http://www.cnblogs.com/weschen/p/7395667.html" target="_blank" rel="external">http://www.cnblogs.com/weschen/p/7395667.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mongodb // 安装mongodb</div><div class="line">service mongodb start</div><div class="line">service mongodb stop</div></pre></td></tr></table></figure></p><p>安装robomongo<br><a href="http://blog.csdn.net/cristal_tina/article/details/53634209" target="_blank" rel="external">http://blog.csdn.net/cristal_tina/article/details/53634209</a></p>]]></content>
     
@@ -241,10 +298,10 @@
     
     </summary>
     
-      <category term="linux" scheme="https://aoping.github.io/categories/linux/"/>
+      <category term="ubuntu" scheme="https://aoping.github.io/categories/ubuntu/"/>
     
     
-      <category term="linux ubuntu" scheme="https://aoping.github.io/tags/linux-ubuntu/"/>
+      <category term="ubuntu 软件安装" scheme="https://aoping.github.io/tags/ubuntu-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
