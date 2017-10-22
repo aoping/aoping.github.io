@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-10-17T15:01:42.648Z</updated>
+  <updated>2017-10-22T03:40:19.704Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git教程</title>
+    <link href="https://aoping.github.io/2017/10/22/git-tutorial/"/>
+    <id>https://aoping.github.io/2017/10/22/git-tutorial/</id>
+    <published>2017-10-22T03:16:58.000Z</published>
+    <updated>2017-10-22T03:40:19.704Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Git – fatal: Unable to create ‘XXX/.git/index.lock’</strong></p><ul><li>在.git同级目录，执行rm -f .git/index.lock （或者rm -f git/index.lock）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;常见问题&quot;&gt;&lt;a href=&quot;#常见问题&quot; class=&quot;headerlink&quot; title=&quot;常见问题&quot;&gt;&lt;/a&gt;常见问题&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Git – fatal: Unable to create ‘XXX/.git/index.lock’&lt;/s
+      
+    
+    </summary>
+    
+      <category term="git" scheme="https://aoping.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://aoping.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法</title>
+    <link href="https://aoping.github.io/2017/10/18/algorithm-javascript/"/>
+    <id>https://aoping.github.io/2017/10/18/algorithm-javascript/</id>
+    <published>2017-10-18T06:41:26.000Z</published>
+    <updated>2017-10-22T03:14:46.349Z</updated>
+    
+    <content type="html"><![CDATA[<p>javascript实现算法</p><a id="more"></a><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>需求：在一个有序数组a中查找一个数n<br>算法：取中间键mid，比较a[mid]和n，n大就继续在右边查找，n小就在左边查找</p><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h4 id="场景：-已知元素要求可以枚举"><a href="#场景：-已知元素要求可以枚举" class="headerlink" title="场景： 已知元素要求可以枚举"></a>场景： 已知元素要求可以枚举</h4><h4 id="算法：-初始化好空桶（值为0），再遍历数组数值放到对应的桶"><a href="#算法：-初始化好空桶（值为0），再遍历数组数值放到对应的桶" class="headerlink" title="算法： 初始化好空桶（值为0），再遍历数组数值放到对应的桶"></a>算法： 初始化好空桶（值为0），再遍历数组数值放到对应的桶</h4><h4 id="javascript实现"><a href="#javascript实现" class="headerlink" title="javascript实现"></a>javascript实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> arry = []</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>; i&lt;<span class="number">11</span>;i++) &#123;</div><div class="line">    arry[i] =<span class="number">0</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i= <span class="number">0</span>;i&lt;a.length;i++) &#123;</div><div class="line">    arry[a[i]]++</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i= <span class="number">0</span>;i&lt;<span class="number">11</span>;i++) &#123;</div><div class="line">    <span class="keyword">if</span>(arry[i]!==<span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j= <span class="number">0</span>;j&lt;arry[i];j++) &#123;</div><div class="line">      <span class="built_in">console</span>.log(i)</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">sort([<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>])</div></pre></td></tr></table></figure><h4 id="算法时间复杂度-O-M-N-m是桶的数量，n是要排序的数组大小"><a href="#算法时间复杂度-O-M-N-m是桶的数量，n是要排序的数组大小" class="headerlink" title="算法时间复杂度 O(M+N) m是桶的数量，n是要排序的数组大小"></a>算法时间复杂度 O(M+N) m是桶的数量，n是要排序的数组大小</h4><h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><ul><li>优点：快</li><li>缺点： 浪费空间</li></ul><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h4 id="算法：每次比较两个相邻的元素，如果顺序错了就交换位置-第一次遍历：比较第1、2位，再比较2、3位，至n位，第二次遍历比较第1、2位，再比较2、3位，至n-1位-…此过程中遍历几次，最后几位就是排好序的"><a href="#算法：每次比较两个相邻的元素，如果顺序错了就交换位置-第一次遍历：比较第1、2位，再比较2、3位，至n位，第二次遍历比较第1、2位，再比较2、3位，至n-1位-…此过程中遍历几次，最后几位就是排好序的" class="headerlink" title="算法：每次比较两个相邻的元素，如果顺序错了就交换位置(第一次遍历：比较第1、2位，再比较2、3位，至n位，第二次遍历比较第1、2位，再比较2、3位，至n-1位,…此过程中遍历几次，最后几位就是排好序的)"></a>算法：每次比较两个相邻的元素，如果顺序错了就交换位置(第一次遍历：比较第1、2位，再比较2、3位，至n位，第二次遍历比较第1、2位，再比较2、3位，至n-1位,…此过程中遍历几次，最后几位就是排好序的)</h4><h4 id="javascript实现-1"><a href="#javascript实现-1" class="headerlink" title="javascript实现"></a>javascript实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;a.length;i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> j=<span class="number">0</span>;j&lt;a.length-i<span class="number">-1</span>;j++)&#123;</div><div class="line">      <span class="keyword">if</span>(a[j]&lt;a[j+<span class="number">1</span>]) &#123;</div><div class="line">      <span class="keyword">let</span> tmp = a[j]</div><div class="line">      a[j] = a[j+<span class="number">1</span>]</div><div class="line">      a[j+<span class="number">1</span>] = tmp</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(a)</div><div class="line">&#125;</div><div class="line"></div><div class="line">sort([<span class="number">5</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>])</div></pre></td></tr></table></figure><h4 id="算法时间复杂度-O-n-2-，一般不用"><a href="#算法时间复杂度-O-n-2-，一般不用" class="headerlink" title="算法时间复杂度 O(n*2)，一般不用"></a>算法时间复杂度 O(n*2)，一般不用</h4><h4 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h4><ul><li>缺点： 慢</li><li>优点： 节约空间（相对于桶排序）</li></ul><h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="算法：一个数组a-先随便找一个基准数-一般设start-0第一个设为k-a-start-，然后i从左到右查找第一个大于k的数a-i-，j从右到左找第一个小于k的数a-j-，如果i不大于j则交换两个数字继续遍历，遍历结束交换a-start-和a-j-这样位置j左边的都小于k-右边都大于k"><a href="#算法：一个数组a-先随便找一个基准数-一般设start-0第一个设为k-a-start-，然后i从左到右查找第一个大于k的数a-i-，j从右到左找第一个小于k的数a-j-，如果i不大于j则交换两个数字继续遍历，遍历结束交换a-start-和a-j-这样位置j左边的都小于k-右边都大于k" class="headerlink" title="算法：一个数组a,先随便找一个基准数,一般设start=0第一个设为k=a[start]，然后i从左到右查找第一个大于k的数a[i]，j从右到左找第一个小于k的数a[j]，如果i不大于j则交换两个数字继续遍历，遍历结束交换a[start]和a[j],这样位置j左边的都小于k,右边都大于k"></a>算法：一个数组a,先随便找一个基准数,一般设start=0第一个设为k=a[start]，然后i从左到右查找第一个大于k的数a[i]，j从右到左找第一个小于k的数a[j]，如果i不大于j则交换两个数字继续遍历，遍历结束交换a[start]和a[j],这样位置j左边的都小于k,右边都大于k</h4><p>接着位置j左右两边继续上诉操作</p><h4 id="javascript实现-2"><a href="#javascript实现-2" class="headerlink" title="javascript实现"></a>javascript实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><p>在不同情况下使用不同的算法</p><h3 id="计数排序-基数排序-插入排序-归并排序-堆排序"><a href="#计数排序-基数排序-插入排序-归并排序-堆排序" class="headerlink" title="计数排序 基数排序 插入排序 归并排序 堆排序"></a>计数排序 基数排序 插入排序 归并排序 堆排序</h3><h2 id="队列-栈-链表"><a href="#队列-栈-链表" class="headerlink" title="队列 栈 链表"></a>队列 栈 链表</h2><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>队列有三个基本元素： 一个数组 一个头 一个尾<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct queue &#123;</div><div class="line">  let data[100]; // 队列主体</div><div class="line">  let head; // 队首</div><div class="line">  let tail; // 队尾</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><h4 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h4><ul><li>判断是否是回文字符</li></ul><h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p>元素： 值、指向下一元素的指针</p><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;javascript实现算法&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aoping.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="algorithm javascript" scheme="https://aoping.github.io/tags/algorithm-javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows安装使用Arcanist</title>
@@ -66,24 +113,25 @@
     <link href="https://aoping.github.io/2017/10/15/ubuntu-keyword/"/>
     <id>https://aoping.github.io/2017/10/15/ubuntu-keyword/</id>
     <published>2017-10-15T01:25:37.000Z</published>
-    <updated>2017-10-15T01:46:00.220Z</updated>
+    <updated>2017-10-22T04:13:44.300Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>分屏显示</li></ul><p>ctrl+Windowskey(Super key)+上下左右</p><ul><li>多窗口分屏式终端–Terminatgongzuoquor</li></ul><p>可在同一屏打开多个窗口，安装如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install terminator</div></pre></td></tr></table></figure></p><p><img src="1.png" alt="1.png"></p><ul><li>显示桌面/开启工作区<br>依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可</li></ul><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<p><strong>分屏显示</strong></p><ul><li>ctrl+Windowskey(Super key)+上下左右</li></ul><p><strong>多窗口分屏式终端–Terminatgongzuoquor</strong></p><ul><li>可在同一屏打开多个窗口，安装如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install terminator</div></pre></td></tr></table></figure></li></ul><p><img src="1.png" alt="1.png"><br><strong>显示桌面/开启工作区</strong></p><ul><li>依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可</li><li>alt+ctrl+方向箭头 切换工作区<a id="more"></a></li></ul><p><strong>显示隐藏文件</strong></p><ul><li>ctrl+h</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;ul&gt;
-&lt;li&gt;分屏显示&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;ctrl+Windowskey(Super key)+上下左右&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;分屏显示&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;多窗口分屏式终端–Terminatgongzuoquor&lt;/li&gt;
+&lt;li&gt;ctrl+Windowskey(Super key)+上下左右&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;可在同一屏打开多个窗口，安装如下&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install terminator&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;1.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多窗口分屏式终端–Terminatgongzuoquor&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;显示桌面/开启工作区&lt;br&gt;依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可&lt;/li&gt;
+&lt;li&gt;可在同一屏打开多个窗口，安装如下&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install terminator&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;1.png&quot;&gt;&lt;br&gt;&lt;strong&gt;显示桌面/开启工作区&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可&lt;/li&gt;
+&lt;li&gt;alt+ctrl+方向箭头 切换工作区
     
     </summary>
     
@@ -333,9 +381,9 @@
     <link href="https://aoping.github.io/2017/10/06/ubuntu-software/"/>
     <id>https://aoping.github.io/2017/10/06/ubuntu-software/</id>
     <published>2017-10-06T10:02:45.000Z</published>
-    <updated>2017-10-17T15:02:32.921Z</updated>
+    <updated>2017-10-22T03:59:42.362Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/shidaping/article/details/52218278" target="_blank" rel="external">http://blog.csdn.net/shidaping/article/details/52218278</a><br><a href="http://blog.csdn.net/tao_627/article/details/52635691" target="_blank" rel="external">http://blog.csdn.net/tao_627/article/details/52635691</a></p><p>安装微信<br><a href="http://blog.csdn.net/ch593030323/article/details/53571807" target="_blank" rel="external">http://blog.csdn.net/ch593030323/article/details/53571807</a></p><a id="more"></a><p>安装qq(2017版)<br><a href="http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1</a><br><a href="http://blog.csdn.net/ysy950803/article/details/52958538" target="_blank" rel="external">http://blog.csdn.net/ysy950803/article/details/52958538</a></p><p>安装迅雷<br><a href="http://blog.csdn.net/zhuyucheng123/article/details/51147550" target="_blank" rel="external">http://blog.csdn.net/zhuyucheng123/article/details/51147550</a></p><p>登录激活就可以使用了</p><p>安装mongodb<br><a href="http://blog.csdn.net/flyfish111222/article/details/51886787" target="_blank" rel="external">http://blog.csdn.net/flyfish111222/article/details/51886787</a><br><a href="http://www.cnblogs.com/weschen/p/7395667.html" target="_blank" rel="external">http://www.cnblogs.com/weschen/p/7395667.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mongodb // 安装mongodb</div><div class="line">service mongodb start</div><div class="line">service mongodb stop</div></pre></td></tr></table></figure></p><p>安装robomongo<br><a href="http://blog.csdn.net/cristal_tina/article/details/53634209" target="_blank" rel="external">http://blog.csdn.net/cristal_tina/article/details/53634209</a></p><p>安装gitbook<br><a href="http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/shidaping/article/details/52218278" target="_blank" rel="external">http://blog.csdn.net/shidaping/article/details/52218278</a><br><a href="http://blog.csdn.net/tao_627/article/details/52635691" target="_blank" rel="external">http://blog.csdn.net/tao_627/article/details/52635691</a></p><p>安装微信<br><a href="http://blog.csdn.net/ch593030323/article/details/53571807" target="_blank" rel="external">http://blog.csdn.net/ch593030323/article/details/53571807</a></p><a id="more"></a><p>安装qq(2017版)<br><a href="http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1</a><br><a href="http://blog.csdn.net/ysy950803/article/details/52958538" target="_blank" rel="external">http://blog.csdn.net/ysy950803/article/details/52958538</a></p><p>安装迅雷<br><a href="http://blog.csdn.net/zhuyucheng123/article/details/51147550" target="_blank" rel="external">http://blog.csdn.net/zhuyucheng123/article/details/51147550</a></p><p>登录激活就可以使用了</p><p>安装mongodb<br><a href="http://blog.csdn.net/flyfish111222/article/details/51886787" target="_blank" rel="external">http://blog.csdn.net/flyfish111222/article/details/51886787</a><br><a href="http://www.cnblogs.com/weschen/p/7395667.html" target="_blank" rel="external">http://www.cnblogs.com/weschen/p/7395667.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mongodb // 安装mongodb</div><div class="line">service mongodb start</div><div class="line">service mongodb stop</div></pre></td></tr></table></figure></p><p>安装robomongo<br><a href="http://blog.csdn.net/cristal_tina/article/details/53634209" target="_blank" rel="external">http://blog.csdn.net/cristal_tina/article/details/53634209</a></p><p>安装gitbook<br><a href="http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1</a></p><p>安装wps<br><strong>下载地址</strong><br> <a href="http://wps-community.org/download.html" target="_blank" rel="external">http://wps-community.org/download.html</a><br><strong>字体缺失下载地址</strong></p><p>启动WPS for Linux后，出现提示”系统缺失字体” 。</p><p>出现提示的原因是因为WPS for Linux没有自带windows的字体，只要在Linux系统中加载字体即可。</p><p>具体操作步骤如下：</p><ol><li>下载缺失的字体文件，然后复制到Linux系统中的/usr/share/fonts文件夹中。</li></ol><p>国外下载地址：<a href="https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip" target="_blank" rel="external">https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip</a></p><p>国内下载地址：<a href="https://pan.baidu.com/s/1eS6xIzo" target="_blank" rel="external">https://pan.baidu.com/s/1eS6xIzo</a></p><p>（上述数据来源网络，侵删）</p><p>下载完成后，解压并进入目录中，继续执行：</p><p>sudo cp * /usr/share/fonts</p><ol><li>执行以下命令,生成字体的索引信息：</li></ol><p>sudo mkfontscale</p><p>sudo mkfontdir</p><ol><li>运行fc-cache命令更新字体缓存。</li></ol><p>sudo fc-cache</p><ol><li>重启wps即可，字体缺失的提示不再出现。</li></ol>]]></content>
     
     <summary type="html">
     
