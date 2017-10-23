@@ -264,6 +264,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/10/24/js-utils/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敖平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AoPing's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/24/js-utils/" itemprop="url">js-utils</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T00:16:35+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/10/24/js-utils/" class="leancloud_visitors" data-flag-title="js-utils">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * js常用工具类</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 方法作用：【格式化时间】</span></div><div class="line"><span class="comment"> * 使用方法</span></div><div class="line"><span class="comment"> * 示例：</span></div><div class="line"><span class="comment"> *      使用方式一：</span></div><div class="line"><span class="comment"> *      var now = new Date();</span></div><div class="line"><span class="comment"> *      var nowStr = now.dateFormat("yyyy-MM-dd hh:mm:ss");</span></div><div class="line"><span class="comment"> *      使用方式二：</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyy年MM月dd日");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("MM/dd/yyyy");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyyMMdd");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyy-MM-dd hh:mm:ss");</span></div><div class="line"><span class="comment"> * @param format &#123;date&#125; 传入要格式化的日期类型</span></div><div class="line"><span class="comment"> * @returns &#123;2015-01-31 16:30:00&#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="built_in">Date</span>.prototype.dateFormat = <span class="function"><span class="keyword">function</span> (<span class="params">format</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> o = &#123;</div><div class="line">        <span class="string">"M+"</span> : <span class="keyword">this</span>.getMonth()+<span class="number">1</span>, <span class="comment">//month</span></div><div class="line">        <span class="string">"d+"</span> : <span class="keyword">this</span>.getDate(), <span class="comment">//day</span></div><div class="line">        <span class="string">"h+"</span> : <span class="keyword">this</span>.getHours(), <span class="comment">//hour</span></div><div class="line">        <span class="string">"m+"</span> : <span class="keyword">this</span>.getMinutes(), <span class="comment">//minute</span></div><div class="line">        <span class="string">"s+"</span> : <span class="keyword">this</span>.getSeconds(), <span class="comment">//second</span></div><div class="line">        <span class="string">"q+"</span> : <span class="built_in">Math</span>.floor((<span class="keyword">this</span>.getMonth()+<span class="number">3</span>)/<span class="number">3</span>), <span class="comment">//quarter</span></div><div class="line">        <span class="string">"S"</span> : <span class="keyword">this</span>.getMilliseconds() <span class="comment">//millisecond</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(<span class="regexp">/(y+)/</span>.test(format)) &#123;</div><div class="line">        format = format.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, (<span class="keyword">this</span>.getFullYear()+<span class="string">""</span>).substr(<span class="number">4</span> - <span class="built_in">RegExp</span>.$<span class="number">1.</span>length));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> o) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"("</span>+ k +<span class="string">")"</span>).test(format)) &#123;</div><div class="line">            format = format.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, <span class="built_in">RegExp</span>.$<span class="number">1.</span>length==<span class="number">1</span> ? o[k] : (<span class="string">"00"</span>+ o[k]).substr((<span class="string">""</span>+ o[k]).length));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> format;</div><div class="line">&#125;</div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           日期时间工具类                            *</span></div><div class="line"><span class="comment"> *                     注：调用方式，deteUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> dateUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【取传入日期是星期几】</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.nowFewWeeks(new Date());</span></div><div class="line"><span class="comment">     * @param date&#123;date&#125; 传入日期类型</span></div><div class="line"><span class="comment">     * @returns &#123;星期四，...&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    nowFewWeeks:<span class="function"><span class="keyword">function</span>(<span class="params">date</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(date <span class="keyword">instanceof</span> <span class="built_in">Date</span>)&#123;</div><div class="line">            <span class="keyword">var</span> dayNames = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"星期天"</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>);</div><div class="line">            <span class="keyword">return</span> dayNames[date.getDay()];</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Param error,date type!"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【字符串转换成日期】</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.strTurnDate("2010-01-01");</span></div><div class="line"><span class="comment">     * @param str &#123;String&#125;字符串格式的日期，传入格式：yyyy-mm-dd(2015-01-31)</span></div><div class="line"><span class="comment">     * @return &#123;Date&#125;由字符串转换成的日期</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    strTurnDate:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span>   re   =   <span class="regexp">/^(\d&#123;4&#125;)\S(\d&#123;1,2&#125;)\S(\d&#123;1,2&#125;)$/</span>;</div><div class="line">        <span class="keyword">var</span>   dt;</div><div class="line">        <span class="keyword">if</span>   (re.test(str))&#123;</div><div class="line">            dt   =   <span class="keyword">new</span>   <span class="built_in">Date</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>,<span class="built_in">RegExp</span>.$<span class="number">2</span>   -   <span class="number">1</span>,<span class="built_in">RegExp</span>.$<span class="number">3</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dt;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【计算2个日期之间的天数】</span></div><div class="line"><span class="comment">     * 传入格式：yyyy-mm-dd(2015-01-31)</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.dayMinus(startDate,endDate);</span></div><div class="line"><span class="comment">     * @startDate &#123;Date&#125;起始日期</span></div><div class="line"><span class="comment">     * @endDate &#123;Date&#125;结束日期</span></div><div class="line"><span class="comment">     * @return endDate - startDate的天数差</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    dayMinus:<span class="function"><span class="keyword">function</span>(<span class="params">startDate, endDate</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(startDate <span class="keyword">instanceof</span> <span class="built_in">Date</span> &amp;&amp; endDate <span class="keyword">instanceof</span> <span class="built_in">Date</span>)&#123;</div><div class="line">            <span class="keyword">var</span> days = <span class="built_in">Math</span>.floor((endDate-startDate)/(<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>));</div><div class="line">            <span class="keyword">return</span> days;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Param error,date type!"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           加载工具类                                *</span></div><div class="line"><span class="comment"> *                     注：调用方式，loadUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> loadUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法说明：【动态加载js文件css文件】</span></div><div class="line"><span class="comment">     * 使用方法：loadUtil.loadjscssfile("http://libs.baidu.com/jquery/1.9.1/jquery.js","js")</span></div><div class="line"><span class="comment">     * @param fileurl 文件路径，</span></div><div class="line"><span class="comment">     * @param filetype 文件类型，支持传入类型，js、css</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    loadjscssfile:<span class="function"><span class="keyword">function</span>(<span class="params">fileurl,filetype</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(filetype == <span class="string">"js"</span>)&#123;</div><div class="line">            <span class="keyword">var</span> fileref = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"type"</span>,<span class="string">"text/javascript"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"src"</span>,fileurl);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(filetype == <span class="string">"css"</span>)&#123;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> fileref = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"rel"</span>,<span class="string">"stylesheet"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"type"</span>,<span class="string">"text/css"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"href"</span>,fileurl);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> fileref != <span class="string">"undefined"</span>)&#123;</div><div class="line">            <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(fileref);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            alert(<span class="string">"loadjscssfile method error!"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           字符串操作工具类                          *</span></div><div class="line"><span class="comment"> *                     注：调用方式，strUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> strUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 判断字符串是否为空</span></div><div class="line"><span class="comment">     * @param str 传入的字符串</span></div><div class="line"><span class="comment">     * @returns &#123;&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEmpty:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str != <span class="literal">null</span> &amp;&amp; str.length &gt; <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 判断两个字符串子否相同</span></div><div class="line"><span class="comment">     * @param str1</span></div><div class="line"><span class="comment">     * @param str2</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEquals:<span class="function"><span class="keyword">function</span>(<span class="params">str1,str2</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str1==str2)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 忽略大小写判断字符串是否相同</span></div><div class="line"><span class="comment">     * @param str1</span></div><div class="line"><span class="comment">     * @param str2</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEqualsIgnorecase:<span class="function"><span class="keyword">function</span>(<span class="params">str1,str2</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str1.toUpperCase() == str2.toUpperCase())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 判断是否是数字</span></div><div class="line"><span class="comment">     * @param value</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isNum:<span class="function"><span class="keyword">function</span> (<span class="params">value</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>( value != <span class="literal">null</span> &amp;&amp; value.length&gt;<span class="number">0</span> &amp;&amp; <span class="built_in">isNaN</span>(value) == <span class="literal">false</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 判断是否是中文</span></div><div class="line"><span class="comment">     * @param str</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isChine:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="regexp">/^([u4E00-u9FA5]|[uFE30-uFFA0])*$/</span>;</div><div class="line">        <span class="keyword">if</span>(reg.test(str))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/10/22/git-tutorial/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1673,163 +1803,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/10/11/software-bookmark/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="敖平">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AoPing's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/11/software-bookmark/" itemprop="url">不同浏览器间书签共享</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T10:05:21+08:00">
-                2017-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/浏览器/" itemprop="url" rel="index">
-                    <span itemprop="name">浏览器</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/11/software-bookmark/" class="leancloud_visitors" data-flag-title="不同浏览器间书签共享">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>作为一名前端开发，总要和很多不同浏览器打交道，自己也有保存书签过段时间再看的习惯，但书签保存在不同浏览器中，怎么实现书签共享呢？<br>今天给大家介绍的就是xMarks</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/software-bookmark/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1883,7 +1856,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
