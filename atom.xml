@@ -45,18 +45,17 @@
     <link href="https://aoping.github.io/2017/10/31/node-npm/"/>
     <id>https://aoping.github.io/2017/10/31/node-npm/</id>
     <published>2017-10-31T06:58:14.000Z</published>
-    <updated>2017-11-01T14:58:32.299Z</updated>
+    <updated>2017-11-04T15:51:29.620Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>dotenv  把变量加载入process.env</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul><li>把变量加载入process.env dotenv</li><li>控制台颜色     colors  chalks</li><li>路径    path</li><li>日志    log4js</li><li>跨站请求伪造    csurf</li><li>压缩    compression</li><li>文件上传  connect-busboy</li><li>错误处理  errorhandler</li><li>跨域    cors</li></ul><h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul><li>session   express-session</li><li>RedisStore    connect-redis</li><li></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
-&lt;li&gt;dotenv  把变量加载入process.env&lt;/li&gt;
-&lt;/ul&gt;
-
+        &lt;h2 id=&quot;常用依赖&quot;&gt;&lt;a href=&quot;#常用依赖&quot; class=&quot;headerlink&quot; title=&quot;常用依赖&quot;&gt;&lt;/a&gt;常用依赖&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;把变量加载入process.env dotenv&lt;/li&gt;
+&lt;li&gt;控制台颜色     colors  chal
       
     
     </summary>
