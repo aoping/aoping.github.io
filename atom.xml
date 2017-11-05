@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-11-01T14:58:32.300Z</updated>
+  <updated>2017-11-05T07:05:55.087Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习清单</title>
+    <link href="https://aoping.github.io/2017/11/05/learn-list/"/>
+    <id>https://aoping.github.io/2017/11/05/learn-list/</id>
+    <published>2017-11-05T07:01:37.000Z</published>
+    <updated>2017-11-05T07:05:55.087Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>makefile  <a href="http://blog.csdn.net/ruglcc/article/details/7814546/" target="_blank" rel="external">http://blog.csdn.net/ruglcc/article/details/7814546/</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;makefile  &lt;a href=&quot;http://blog.csdn.net/ruglcc/article/details/7814546/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/ruglcc
+      
+    
+    </summary>
+    
+      <category term="个人" scheme="https://aoping.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    
+      <category term="任务" scheme="https://aoping.github.io/tags/%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>笔记</title>
@@ -45,9 +71,9 @@
     <link href="https://aoping.github.io/2017/10/31/node-npm/"/>
     <id>https://aoping.github.io/2017/10/31/node-npm/</id>
     <published>2017-10-31T06:58:14.000Z</published>
-    <updated>2017-11-05T06:49:56.554Z</updated>
+    <updated>2017-11-05T08:54:54.528Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul><li>把变量加载入process.env dotenv</li><li>控制台颜色     colors  chalks</li><li>路径    path</li><li>日志    log4js</li><li>http request logger   morgan</li><li>跨站请求伪造    csurf</li><li>压缩    compression</li><li>文件上传  connect-busboy</li><li>错误处理  errorhandler</li><li>跨域    cors</li></ul><h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul><li>容量转换  bytes</li><li>日期转换  monents</li><li></li></ul><h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul><li>session   express-session</li><li>RedisStore    connect-redis</li><li></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul><li>把变量加载入process.env dotenv</li><li>控制台颜色     colors  chalks</li><li>路径    path</li><li>日志    log4js</li><li>http request logger   morgan</li><li>跨站请求伪造    csurf</li><li>压缩    compression</li><li>文件上传  connect-busboy</li><li>错误处理  errorhandler</li><li>跨域    cors</li><li>事件驱动  eventproxy</li></ul><h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul><li>容量转换  bytes</li><li>日期转换  monents</li><li>xml   xmlbuilder</li></ul><h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul><li>session   express-session</li><li>RedisStore    connect-redis</li><li>redis client  ioredis</li></ul>]]></content>
     
     <summary type="html">
     
@@ -219,9 +245,9 @@
     <link href="https://aoping.github.io/2017/10/15/node-express/"/>
     <id>https://aoping.github.io/2017/10/15/node-express/</id>
     <published>2017-10-15T00:50:13.000Z</published>
-    <updated>2017-10-15T01:42:12.304Z</updated>
+    <updated>2017-11-05T07:55:00.605Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="安装express"><a href="#安装express" class="headerlink" title="安装express"></a>安装express</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express -g</div></pre></td></tr></table></figure><h2 id="express生成器"><a href="#express生成器" class="headerlink" title="express生成器"></a>express生成器</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express-generator -g</div></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express -h // 帮助</div><div class="line">express myapp //生成app</div></pre></td></tr></table></figure><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd myapp</div><div class="line">npm i</div></pre></td></tr></table></figure><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DEBUG=myapp npm start  // mac or linux</div><div class="line">set DEBUG=myapp &amp; npm start // windows</div></pre></td></tr></table></figure><h2 id="express架构"><a href="#express架构" class="headerlink" title="express架构"></a>express架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;)</div><div class="line">var app = express()</div><div class="line"></div><div class="line">// view engine setup</div><div class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="安装express"><a href="#安装express" class="headerlink" title="安装express"></a>安装express</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express -g</div></pre></td></tr></table></figure><h2 id="express生成器"><a href="#express生成器" class="headerlink" title="express生成器"></a>express生成器</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i express-generator -g</div></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express -h // 帮助</div><div class="line">express myapp //生成app</div></pre></td></tr></table></figure><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd myapp</div><div class="line">npm i</div></pre></td></tr></table></figure><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DEBUG=myapp npm start  // mac or linux</div><div class="line">set DEBUG=myapp &amp; npm start // windows</div></pre></td></tr></table></figure><h2 id="express架构"><a href="#express架构" class="headerlink" title="express架构"></a>express架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app -&gt;  router  -&gt;  controller  -&gt; model   -&gt; mongoose</div><div class="line">                                -&gt; view    -&gt; pug/html</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;)</div><div class="line">var app = express()</div><div class="line"></div><div class="line">// view engine setup</div><div class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</div></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</div><div class="line"><span class="keyword">var</span> RedisStore = <span class="built_in">require</span>(<span class="string">'connect-redis'</span>)(session);</div><div class="line">app.use(<span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)(config.session_secret));</div><div class="line">app.use(session(&#123;</div><div class="line">  secret: config.session_secret,</div><div class="line">  store: <span class="keyword">new</span> RedisStore(&#123;</div><div class="line">    port: config.redis_port,</div><div class="line">    host: config.redis_host,</div><div class="line">    db: config.redis_db,</div><div class="line">    pass: config.redis_password,</div><div class="line">  &#125;),</div><div class="line">  resave: <span class="literal">false</span>,</div><div class="line">  saveUninitialized: <span class="literal">false</span>,</div><div class="line">&#125;));</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -468,28 +494,6 @@
     
     
       <category term="ubuntu 软件安装" scheme="https://aoping.github.io/tags/ubuntu-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>html5</title>
-    <link href="https://aoping.github.io/2017/10/03/html5/"/>
-    <id>https://aoping.github.io/2017/10/03/html5/</id>
-    <published>2017-10-03T00:54:20.000Z</published>
-    <updated>2017-10-14T14:45:14.832Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="本节主要记录html5的相关知识"><a href="#本节主要记录html5的相关知识" class="headerlink" title="本节主要记录html5的相关知识"></a>本节主要记录html5的相关知识</h1><a id="more"></a><h2 id="推出的理由"><a href="#推出的理由" class="headerlink" title="推出的理由"></a>推出的理由</h2><ul><li>web浏览器之间兼容性很低</li><li>文档结构不够明确</li><li>web应用程序功能收到限制</li></ul><h2 id="语法的改变"><a href="#语法的改变" class="headerlink" title="语法的改变"></a>语法的改变</h2><ul><li>内容类型</li><li>doctype声明</li><li>指定字符编码</li><li>可以省略标记的yuans</li><li>省略引号</li><li>boolean值可以省略</li></ul><h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="新增的结构元素"><a href="#新增的结构元素" class="headerlink" title="新增的结构元素"></a>新增的结构元素</h3><p>section article aside header hgroup footer nav figure</p><h4 id="主题结构元素"><a href="#主题结构元素" class="headerlink" title="主题结构元素"></a>主题结构元素</h4><ul><li>article<br>  有header p footer<br>  可以嵌套<br>  特殊的section</li><li>section<br>  需要设置样式时用div<br>  有标题内容h1才使用section<br>  可以嵌套</li><li><p>nav<br>  应用场景：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;nav&gt;</div><div class="line">    &lt;h2&gt;xxx&lt;/h2&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/nav&gt;</div></pre></td></tr></table></figure></li><li><p>aside<br>  表示当前页面或文章的附属信息部分，相关引用、侧边栏、广告、导航条等</p></li><li><p>time与微格式</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;time datetime=&quot;2015-10-10&quot; pubdate&gt;2015-10-10&lt;/time&gt;</div></pre></td></tr></table></figure></li></ul><h4 id="非主体结构元素"><a href="#非主体结构元素" class="headerlink" title="非主体结构元素"></a>非主体结构元素</h4><ul><li>header footer hgroup<br>  hgroup包裹h1-h6,表示子标题</li><li>address</li></ul><h4 id="表单新增元素"><a href="#表单新增元素" class="headerlink" title="表单新增元素"></a>表单新增元素</h4><p>#### </p><h3 id="网页编排规则"><a href="#网页编排规则" class="headerlink" title="网页编排规则"></a>网页编排规则</h3><ul><li>显示编排内容区域块</li><li>显示编排内容区域块</li><li>标题分级</li><li>不同区块可以使用相同标题</li></ul><h3 id="新增的其他元素"><a href="#新增的其他元素" class="headerlink" title="新增的其他元素"></a>新增的其他元素</h3><p>video audio embed mark progress meter time canvas</p><h3 id="新增的input类型"><a href="#新增的input类型" class="headerlink" title="新增的input类型"></a>新增的input类型</h3><p>email url number range DatePickers</p><h3 id="废除的元素"><a href="#废除的元素" class="headerlink" title="废除的元素"></a>废除的元素</h3><ul><li>能使用css代替的元素 basefont big center font s tt u等</li><li>不再使用frame框架</li><li>只有部分浏览器支持的元素</li><li>其他被废除的元素</li></ul><h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="新增的属性"><a href="#新增的属性" class="headerlink" title="新增的属性"></a>新增的属性</h3><h4 id="表单内元素的form属性"><a href="#表单内元素的form属性" class="headerlink" title="表单内元素的form属性"></a>表单内元素的form属性</h4><h3 id="废除的属性"><a href="#废除的属性" class="headerlink" title="废除的属性"></a>废除的属性</h3><h3 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h3><p>contentEditable 可以继承<br>designMode只能在js里编辑<br>hidden<br>spellcheck 对input textarea检查<br>tabindex 设置为-1（可以通过js获取到）</p><h1 id="新增api"><a href="#新增api" class="headerlink" title="新增api"></a>新增api</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;本节主要记录html5的相关知识&quot;&gt;&lt;a href=&quot;#本节主要记录html5的相关知识&quot; class=&quot;headerlink&quot; title=&quot;本节主要记录html5的相关知识&quot;&gt;&lt;/a&gt;本节主要记录html5的相关知识&lt;/h1&gt;
-    
-    </summary>
-    
-      <category term="html" scheme="https://aoping.github.io/categories/html/"/>
-    
-    
-      <category term="html html5" scheme="https://aoping.github.io/tags/html-html5/"/>
     
   </entry>
   

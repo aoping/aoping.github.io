@@ -79,7 +79,7 @@
 <meta property="og:site_name" content="AoPing&#39;s Blog">
 <meta property="og:description" content="安装express1npm i express -g express生成器安装1npm i express-generator -g 使用12express -h // 帮助express myapp //生成app 安装依赖12cd myappnpm i 启动12DEBUG=myapp npm start  // mac or linuxset DEBUG=myapp &amp;amp; npm sta">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-15T01:42:12.304Z">
+<meta property="og:updated_time" content="2017-11-05T07:55:00.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express知识点">
 <meta name="twitter:description" content="安装express1npm i express -g express生成器安装1npm i express-generator -g 使用12express -h // 帮助express myapp //生成app 安装依赖12cd myappnpm i 启动12DEBUG=myapp npm start  // mac or linuxset DEBUG=myapp &amp;amp; npm sta">
@@ -370,8 +370,9 @@
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">express -h // 帮助</div><div class="line">express myapp //生成app</div></pre></td></tr></table></figure>
 <h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd myapp</div><div class="line">npm i</div></pre></td></tr></table></figure>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DEBUG=myapp npm start  // mac or linux</div><div class="line">set DEBUG=myapp &amp; npm start // windows</div></pre></td></tr></table></figure>
-<h2 id="express架构"><a href="#express架构" class="headerlink" title="express架构"></a>express架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;)</div><div class="line">var app = express()</div><div class="line"></div><div class="line">// view engine setup</div><div class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</div></pre></td></tr></table></figure>
-
+<h2 id="express架构"><a href="#express架构" class="headerlink" title="express架构"></a>express架构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app -&gt;  router  -&gt;  controller  -&gt; model   -&gt; mongoose</div><div class="line">                                -&gt; view    -&gt; pug/html</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;)</div><div class="line">var app = express()</div><div class="line"></div><div class="line">// view engine setup</div><div class="line">app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));</div><div class="line">app.set(&apos;view engine&apos;, &apos;jade&apos;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</div><div class="line"><span class="keyword">var</span> RedisStore = <span class="built_in">require</span>(<span class="string">'connect-redis'</span>)(session);</div><div class="line">app.use(<span class="built_in">require</span>(<span class="string">'cookie-parser'</span>)(config.session_secret));</div><div class="line">app.use(session(&#123;</div><div class="line">  secret: config.session_secret,</div><div class="line">  store: <span class="keyword">new</span> RedisStore(&#123;</div><div class="line">    port: config.redis_port,</div><div class="line">    host: config.redis_host,</div><div class="line">    db: config.redis_db,</div><div class="line">    pass: config.redis_password,</div><div class="line">  &#125;),</div><div class="line">  resave: <span class="literal">false</span>,</div><div class="line">  saveUninitialized: <span class="literal">false</span>,</div><div class="line">&#125;));</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -530,7 +531,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -541,7 +542,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -552,7 +553,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
