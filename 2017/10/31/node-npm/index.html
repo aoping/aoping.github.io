@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 事件驱动  e">
+<meta name="description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 处理回调  e">
 <meta name="keywords" content="node npm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node-npm">
 <meta property="og:url" content="https://aoping.github.io/2017/10/31/node-npm/index.html">
 <meta property="og:site_name" content="AoPing&#39;s Blog">
-<meta property="og:description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 事件驱动  e">
+<meta property="og:description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 处理回调  e">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-05T08:54:54.528Z">
+<meta property="og:updated_time" content="2017-12-23T02:08:11.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node-npm">
-<meta name="twitter:description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 事件驱动  e">
+<meta name="twitter:description" content="常用依赖 把变量加载入process.env dotenv 控制台颜色     colors  chalks 路径    path 日志    log4js http request logger   morgan 跨站请求伪造    csurf 压缩    compression 文件上传  connect-busboy 错误处理  errorhandler 跨域    cors 处理回调  e">
 
 
 
@@ -376,19 +376,25 @@
 <li>文件上传  connect-busboy</li>
 <li>错误处理  errorhandler</li>
 <li>跨域    cors</li>
+<li>处理回调  eventproxy async promise bluebird</li>
 <li>事件驱动  eventproxy</li>
+<li>请求  request</li>
 </ul>
+<h2 id="流处理"><a href="#流处理" class="headerlink" title="流处理"></a>流处理</h2><p>through2<br>concat-stream</p>
 <h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul>
 <li>容量转换  bytes</li>
 <li>日期转换  monents</li>
 <li>xml   xmlbuilder</li>
+<li>表单验证  validator</li>
+<li>加密    bcryptjs utility</li>
+<li>node-uuid</li>
 </ul>
 <h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul>
 <li>session   express-session</li>
 <li>RedisStore    connect-redis</li>
 <li>redis client  ioredis</li>
 </ul>
-
+<h2 id="安装失败"><a href="#安装失败" class="headerlink" title="安装失败"></a>安装失败</h2><h3 id="安装node-sass失败"><a href="#安装node-sass失败" class="headerlink" title="安装node-sass失败"></a>安装node-sass失败</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用cnpm install重装</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -547,7 +553,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -558,7 +564,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -569,7 +575,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -619,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用依赖"><span class="nav-number">1.</span> <span class="nav-text">常用依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具类"><span class="nav-number">2.</span> <span class="nav-text">常用工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express常用依赖"><span class="nav-number">3.</span> <span class="nav-text">express常用依赖</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用依赖"><span class="nav-number">1.</span> <span class="nav-text">常用依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流处理"><span class="nav-number">2.</span> <span class="nav-text">流处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具类"><span class="nav-number">3.</span> <span class="nav-text">常用工具类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#express常用依赖"><span class="nav-number">4.</span> <span class="nav-text">express常用依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装失败"><span class="nav-number">5.</span> <span class="nav-text">安装失败</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-sass失败"><span class="nav-number">5.1.</span> <span class="nav-text">安装node-sass失败</span></a></li></ol></li></ol></div>
             
 
           </div>

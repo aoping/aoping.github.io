@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://aoping.github.io/"/>
-  <updated>2017-11-05T07:05:55.087Z</updated>
+  <updated>2017-12-23T05:39:41.169Z</updated>
   <id>https://aoping.github.io/</id>
   
   <author>
@@ -15,6 +15,146 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>web构建</title>
+    <link href="https://aoping.github.io/2017/12/23/build-tools/"/>
+    <id>https://aoping.github.io/2017/12/23/build-tools/</id>
+    <published>2017-12-23T02:09:10.000Z</published>
+    <updated>2017-12-23T05:39:41.169Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="构建目的"><a href="#构建目的" class="headerlink" title="构建目的"></a>构建目的</h1><p>压缩<br>优化<br>缓存<br>分离js css</p><h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul><li>一切皆文件</li><li></li></ul><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack webpack-dev-server -g <span class="comment">// 全局安装</span></div><div class="line">npm install webpack webpack-dev-server --save-dev <span class="comment">// 局部安装</span></div></pre></td></tr></table></figure><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><p>webpack配置文件默认名为webpack.config.js<br>在命令行输入webpack/webpack-dev-server，会在命令执行目录下找webpack.config.js<br>如果webpack配置文件名字不为webpack.config.js，或不在命令执行目录下，可以输入<figure class="highlight plain"><figcaption><span>--config ./build/webpack.dev.js ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 配置文件</div><div class="line">### context</div><div class="line">context说明:</div><div class="line">1. 它是一个绝对路径，所以要用到path.resolve函数</div><div class="line">2. 不设表示起点目录是当前目录</div><div class="line">3. 入口文件是在context指定的目录为基础，再往下找</div><div class="line"></div><div class="line">```js</div><div class="line">context: path.resolve(__dirname,&apos;src&apos;)</div></pre></td></tr></table></figure></p><h3 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h3><ul><li>可为string object array<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 多入口</span></div><div class="line">entry: &#123;</div><div class="line">    index: <span class="string">'./src/index.js'</span>,</div><div class="line">    main: <span class="string">'./src/main.js'</span></div><div class="line">&#125;</div><div class="line">entry: [<span class="string">'./src/index.js'</span>,<span class="string">'./src/main.js'</span>]</div><div class="line"><span class="comment">// 或单入口</span></div><div class="line">entry: <span class="string">'./src/index.js'</span></div></pre></td></tr></table></figure></li></ul><h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><ul><li>filename必须</li><li>filename可以用[name] | [id] | [hash] | [chunkhash]来命名<br>  [name] 与entry中的key相同<br>  [id] 与entry中顺序相同，从0开始<br>  [hash] 每次都不同<br>  [chunkhash] 文件变化才会改变</li><li>path需是绝对路径，不指定时表示当前目录<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">    filename: <span class="string">'[name].js'</span>,</div><div class="line">    path: path.resolve(<span class="string">'./build'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></li></ul><h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">    rules: [</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,</div><div class="line">            use: [</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'style-loader'</span>&#125;,</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'css-loader'</span>&#125;,</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'less-loader'</span>&#125;</div><div class="line">            ],</div><div class="line">            exclude: <span class="regexp">/node_modules/</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,</div><div class="line">            loader: <span class="string">'style!css!sass'</span>,</div><div class="line">            exclude: <span class="regexp">/node_modules/</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.vue$/</span>,</div><div class="line">            loader: <span class="string">'vue-loader'</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure><ul><li>loader从右到左加载</li></ul><h4 id="常用loader"><a href="#常用loader" class="headerlink" title="常用loader"></a>常用loader</h4><p>babel-loader： 让下一代的js文件转换成现代浏览器能够支持的JS文件。<br>babel有些复杂，所以大多数都会新建一个.babelrc进行配置<br>css-loader,style-loader:两个建议配合使用，用来解析css文件，能够解释@import,url()如果需要解析less就在后面加一个less-loader<br>file-loader: 生成的文件名就是文件内容的MD5哈希值并会保留所引用资源的原始扩展名<br>url-loader: 功能类似 file-loader,但是文件大小低于指定的限制时，可以返回一个DataURL事实上</p><h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><h4 id="常用plugin"><a href="#常用plugin" class="headerlink" title="常用plugin"></a>常用plugin</h4><ul><li><p>ExtractTextWebpackPlugin: 它会将入口中引用css文件，都打包都独立的css文件中，而不是内嵌在js打包文件中</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>)</div><div class="line"><span class="keyword">var</span> lessRules = &#123;</div><div class="line">    use: [</div><div class="line">        &#123;<span class="attr">loader</span>: <span class="string">'css-loader'</span>&#125;,</div><div class="line">        &#123;<span class="attr">loader</span>: <span class="string">'less-loader'</span>&#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ... </span></div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        rules: [</div><div class="line">            <span class="comment">// ...</span></div><div class="line">            &#123;<span class="attr">test</span>: <span class="regexp">/\.less$/</span>, <span class="attr">use</span>: ExtractTextPlugin.extract(lessRules)&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'main.css'</span>)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>HtmlWebpackPlugin: 依据一个简单的index.html模版，生成一个自动引用你打包后的js文件的新index.html</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HTMLWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> HTMLWebpackPlugin()</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>HotModuleReplacementPlugin: 它允许你在修改组件代码时，自动刷新实时预览修改后的结果注意永远不要在生产环境中使用HMR。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</div></pre></td></tr></table></figure></li><li><p>OccurenceOrderPlugin: 为组件分配ID,通过这个插件webpack可以分析和优先考虑使用最多 的模块，然后为他们分配最小的ID</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin()</div></pre></td></tr></table></figure></li><li><p>UglifyJsPlugin: 压缩代码</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</div></pre></td></tr></table></figure></li></ul><h2 id="区分环境"><a href="#区分环境" class="headerlink" title="区分环境"></a>区分环境</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package.json</span></div><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"NODE_ENV=development webpack-dev-server"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"NODE_ENV=production webpack"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ENV = process.env.NODE_ENV</div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ... </span></div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">            <span class="string">'process.env.NODE_ENV'</span>: <span class="built_in">JSON</span>.stringify(ENV)</div><div class="line">        &#125;)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><h2 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h2><ul><li><p>命令行<br>｀｀｀<br>webpack<br>webpack-dev-server<br>｀｀｀</p></li><li><p>使用webpack依赖包</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// build.js</span></div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</div><div class="line">webpack(webpackConfig, (err, stats) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'已打包好了，我们做点别的事'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 执行</span></div><div class="line">node build.js</div></pre></td></tr></table></figure><ul><li>使用webpack编译器<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</div><div class="line"><span class="keyword">const</span> compiler = webpack(webpackConfig)</div><div class="line">compiler.run( <span class="function">(<span class="params">err, stats</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'已打包好了，我们做点别的事...'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 编译器运行比上面要快些，但它没有包括watch部分，没有监视，只是编译</span></div></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;构建目的&quot;&gt;&lt;a href=&quot;#构建目的&quot; class=&quot;headerlink&quot; title=&quot;构建目的&quot;&gt;&lt;/a&gt;构建目的&lt;/h1&gt;&lt;p&gt;压缩&lt;br&gt;优化&lt;br&gt;缓存&lt;br&gt;分离js css&lt;/p&gt;
+&lt;h1 id=&quot;webpack&quot;&gt;&lt;a href=&quot;#webp
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>windows-software</title>
+    <link href="https://aoping.github.io/2017/11/28/windows-software/"/>
+    <id>https://aoping.github.io/2017/11/28/windows-software/</id>
+    <published>2017-11-28T01:32:37.000Z</published>
+    <updated>2017-12-23T02:08:11.996Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="装机软件"><a href="#装机软件" class="headerlink" title="装机软件"></a>装机软件</h1><h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ol><li>谷歌浏览器 √</li><li>360浏览器 √</li><li>foxmail √</li><li>qq 微信 √</li><li>网易云音乐 √</li><li>teamviewer √</li><li>番茄土豆 √</li><li>potplayer √</li><li>迅雷 √</li><li>ps </li><li>wps √</li><li>TightVNC</li><li>搜狗输入法 √</li><li>gitbook</li></ol><h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><ol><li>nvm-windows √</li><li>node npm yarn √</li><li>arc</li><li>java</li><li>python 2.7.13 √</li><li>ruby</li><li>php -&gt; vs studio 2017 要修改php.ini 参考 <a href="http://blog.csdn.net/rilyu/article/details/37379873" target="_blank" rel="external">http://blog.csdn.net/rilyu/article/details/37379873</a> √ </li></ol><h4 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h4><ol><li>hexo-cli √</li><li>weex-toolkit √</li><li></li></ol><h3 id="开发软件"><a href="#开发软件" class="headerlink" title="开发软件"></a>开发软件</h3><ol><li>gitkraken √</li><li>sourcetree √</li><li>vscode √</li><li>cmder √</li><li>git bash √</li><li>mongodb √</li><li>Robomongo 0.9.0-RC9 √</li><li>virtual box</li><li>webstorm</li><li>RedisDesktopManager</li><li>android studio</li><li>Charles</li><li>Genymotion</li><li>mysql-workbench</li><li>sublimeText √</li><li>notepad++ √</li><li>TortoiseSVN</li><li>atom</li><li>mysql</li><li>IntelliJ IDEA 2017.1.2</li><li></li></ol><h3 id="以管理员身份运行"><a href="#以管理员身份运行" class="headerlink" title="以管理员身份运行"></a>以管理员身份运行</h3><p>1.运行CMD（以管理员权限运行）<br>2.输入以下命令： msiexec /package “你安装程序包的路径”</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;装机软件&quot;&gt;&lt;a href=&quot;#装机软件&quot; class=&quot;headerlink&quot; title=&quot;装机软件&quot;&gt;&lt;/a&gt;装机软件&lt;/h1&gt;&lt;h2 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot; title=&quot;常用&quot;&gt;&lt;/a&gt;常用&lt;/h
+      
+    
+    </summary>
+    
+      <category term="software" scheme="https://aoping.github.io/categories/software/"/>
+    
+    
+      <category term="software" scheme="https://aoping.github.io/tags/software/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux-tution</title>
+    <link href="https://aoping.github.io/2017/11/13/linux-tution/"/>
+    <id>https://aoping.github.io/2017/11/13/linux-tution/</id>
+    <published>2017-11-13T14:24:47.000Z</published>
+    <updated>2017-11-13T14:24:47.947Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常用软件</title>
+    <link href="https://aoping.github.io/2017/11/12/software-index/"/>
+    <id>https://aoping.github.io/2017/11/12/software-index/</id>
+    <published>2017-11-12T07:58:07.000Z</published>
+    <updated>2017-11-12T08:32:40.877Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="远程桌面"><a href="#远程桌面" class="headerlink" title="远程桌面"></a>远程桌面</h2><h3 id="vnc"><a href="#vnc" class="headerlink" title="vnc"></a>vnc</h3><ul><li>vncServer/ vnc-viewer</li><li>VNC轻松连接远程Linux桌面 <a href="https://jingyan.baidu.com/article/6c67b1d6f1bac92786bb1e6d.html" target="_blank" rel="external">https://jingyan.baidu.com/article/6c67b1d6f1bac92786bb1e6d.html</a></li><li>官网 <a href="https://www.realvnc.com/en/" target="_blank" rel="external">https://www.realvnc.com/en/</a></li></ul><h3 id="teamviewer"><a href="#teamviewer" class="headerlink" title="teamviewer"></a>teamviewer</h3><h3 id="ppt"><a href="#ppt" class="headerlink" title="ppt"></a>ppt</h3><p><a href="http://www.slideshare.net/(需翻墙" target="_blank" rel="external">http://www.slideshare.net/(需翻墙</a>)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;远程桌面&quot;&gt;&lt;a href=&quot;#远程桌面&quot; class=&quot;headerlink&quot; title=&quot;远程桌面&quot;&gt;&lt;/a&gt;远程桌面&lt;/h2&gt;&lt;h3 id=&quot;vnc&quot;&gt;&lt;a href=&quot;#vnc&quot; class=&quot;headerlink&quot; title=&quot;vnc&quot;&gt;&lt;/a&gt;vn
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aoping.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="软件" scheme="https://aoping.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node代码片段</title>
+    <link href="https://aoping.github.io/2017/11/08/node-code/"/>
+    <id>https://aoping.github.io/2017/11/08/node-code/</id>
+    <published>2017-11-08T12:49:47.000Z</published>
+    <updated>2017-11-12T10:48:57.591Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>下载网络资源</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">* url 网络文件地址</span></div><div class="line"><span class="comment">* filename 文件名</span></div><div class="line"><span class="comment">* callback 回调函数</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadFile</span>(<span class="params">uri,filename,callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> stream = fs.createWriteStream(filename);</div><div class="line">    request(uri).pipe(stream).on(<span class="string">'close'</span>, callback); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> fileUrl  = <span class="string">'http://p4.so.qhimgs1.com/t01cab6339ead2b1894.jpg'</span>;</div><div class="line"><span class="keyword">var</span> filename = <span class="string">'1.jpg'</span>;</div><div class="line">downloadFile(fileUrl,filename,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'close'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;下载网络资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aoping.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="node" scheme="https://aoping.github.io/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node爬虫</title>
+    <link href="https://aoping.github.io/2017/11/06/node-crawler/"/>
+    <id>https://aoping.github.io/2017/11/06/node-crawler/</id>
+    <published>2017-11-06T05:12:09.000Z</published>
+    <updated>2017-11-12T10:48:57.592Z</updated>
+    
+    <content type="html"><![CDATA[<p>Puppeteer<br>electron<br>nightmare<br>PhantomJS</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Puppeteer&lt;br&gt;electron&lt;br&gt;nightmare&lt;br&gt;PhantomJS&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="https://aoping.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="node 爬虫" scheme="https://aoping.github.io/tags/node-%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>学习清单</title>
@@ -71,9 +211,9 @@
     <link href="https://aoping.github.io/2017/10/31/node-npm/"/>
     <id>https://aoping.github.io/2017/10/31/node-npm/</id>
     <published>2017-10-31T06:58:14.000Z</published>
-    <updated>2017-11-05T08:54:54.528Z</updated>
+    <updated>2017-12-23T02:08:11.934Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul><li>把变量加载入process.env dotenv</li><li>控制台颜色     colors  chalks</li><li>路径    path</li><li>日志    log4js</li><li>http request logger   morgan</li><li>跨站请求伪造    csurf</li><li>压缩    compression</li><li>文件上传  connect-busboy</li><li>错误处理  errorhandler</li><li>跨域    cors</li><li>事件驱动  eventproxy</li></ul><h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul><li>容量转换  bytes</li><li>日期转换  monents</li><li>xml   xmlbuilder</li></ul><h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul><li>session   express-session</li><li>RedisStore    connect-redis</li><li>redis client  ioredis</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul><li>把变量加载入process.env dotenv</li><li>控制台颜色     colors  chalks</li><li>路径    path</li><li>日志    log4js</li><li>http request logger   morgan</li><li>跨站请求伪造    csurf</li><li>压缩    compression</li><li>文件上传  connect-busboy</li><li>错误处理  errorhandler</li><li>跨域    cors</li><li>处理回调  eventproxy async promise bluebird</li><li>事件驱动  eventproxy</li><li>请求  request</li></ul><h2 id="流处理"><a href="#流处理" class="headerlink" title="流处理"></a>流处理</h2><p>through2<br>concat-stream</p><h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul><li>容量转换  bytes</li><li>日期转换  monents</li><li>xml   xmlbuilder</li><li>表单验证  validator</li><li>加密    bcryptjs utility</li><li>node-uuid</li></ul><h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul><li>session   express-session</li><li>RedisStore    connect-redis</li><li>redis client  ioredis</li></ul><h2 id="安装失败"><a href="#安装失败" class="headerlink" title="安装失败"></a>安装失败</h2><h3 id="安装node-sass失败"><a href="#安装node-sass失败" class="headerlink" title="安装node-sass失败"></a>安装node-sass失败</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用cnpm install重装</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -211,9 +351,9 @@
     <link href="https://aoping.github.io/2017/10/15/ubuntu-keyword/"/>
     <id>https://aoping.github.io/2017/10/15/ubuntu-keyword/</id>
     <published>2017-10-15T01:25:37.000Z</published>
-    <updated>2017-10-22T04:13:44.300Z</updated>
+    <updated>2017-11-11T11:58:04.959Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>分屏显示</strong></p><ul><li>ctrl+Windowskey(Super key)+上下左右</li></ul><p><strong>多窗口分屏式终端–Terminatgongzuoquor</strong></p><ul><li>可在同一屏打开多个窗口，安装如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install terminator</div></pre></td></tr></table></figure></li></ul><p><img src="1.png" alt="1.png"><br><strong>显示桌面/开启工作区</strong></p><ul><li>依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可</li><li>alt+ctrl+方向箭头 切换工作区<a id="more"></a></li></ul><p><strong>显示隐藏文件</strong></p><ul><li>ctrl+h</li></ul>]]></content>
+    <content type="html"><![CDATA[<p><strong>分屏显示</strong></p><ul><li>ctrl+Windowskey(Super key)+上下左右</li></ul><p><strong>多窗口分屏式终端–Terminatgongzuoquor</strong></p><ul><li>可在同一屏打开多个窗口，安装如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install terminator</div></pre></td></tr></table></figure></li></ul><p><img src="1.png" alt="1.png"><br><strong>显示桌面/开启工作区</strong></p><ul><li>依次打开系统设置，外观，行为，在中间有开启工作区和添加“显示桌面”图标到启动器，勾选即可</li><li>alt+ctrl+方向箭头 切换工作区<a id="more"></a></li></ul><p><strong>显示隐藏文件</strong></p><ul><li>ctrl+h</li></ul><h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p><strong>创建用户</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">useradd zoro -m -s /bin/bash</div><div class="line">passwd zoro</div><div class="line">su zoro</div><div class="line">gpasswd -a zoro sudo //sudo分组</div></pre></td></tr></table></figure></p>]]></content>
     
     <summary type="html">
     
@@ -354,146 +494,6 @@
     
     
       <category term="浏览器 书签" scheme="https://aoping.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8-%E4%B9%A6%E7%AD%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>keystone学习</title>
-    <link href="https://aoping.github.io/2017/10/10/node-keystone/"/>
-    <id>https://aoping.github.io/2017/10/10/node-keystone/</id>
-    <published>2017-10-10T09:20:04.000Z</published>
-    <updated>2017-10-14T14:45:14.829Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="express"><a href="#express" class="headerlink" title="express"></a>express</h2><a id="more"></a><h2 id="mongodb-mongoose"><a href="#mongodb-mongoose" class="headerlink" title="mongodb mongoose"></a>mongodb mongoose</h2><h3 id="schema-的域-虚拟域-方法-静态域-前置钩子-后置钩子"><a href="#schema-的域-虚拟域-方法-静态域-前置钩子-后置钩子" class="headerlink" title="schema 的域 虚拟域 方法 静态域 前置钩子 后置钩子"></a>schema 的域 虚拟域 方法 静态域 前置钩子 后置钩子</h3><ul><li><p>域（理解为字段,如title就是域）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Post.add(&#123;</div><div class="line">    title: &#123; type: String, required: true &#125;,</div><div class="line">    state: &#123; type: Types.Select, options: &apos;draft, published, archived&apos;, default: &apos;draft&apos; &#125;,</div><div class="line">    author: &#123; type: Types.Relationship, ref: &apos;User&apos; &#125;,</div><div class="line">    createdAt: &#123; type: Date, default: Date.now &#125;,</div><div class="line">    publishedAt: Date,</div><div class="line">    image: &#123; type: Types.CloudinaryImage &#125;,</div><div class="line">    content: &#123;</div><div class="line">        brief: &#123; type: Types.Html, wysiwyg: true, height: 150 &#125;,</div><div class="line">        extended: &#123; type: Types.Html, wysiwyg: true, height: 400 &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li><li><p>虚拟域(该属性不写入数据库,用于计算属性)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">User.schema.virtual(&apos;canAccessKeystone&apos;).get(function () &#123;</div><div class="line">return this.isAdmin;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"> PersonSchema.virtual(&apos;name.full&apos;).set(function(name)&#123;</div><div class="line">      var split = name.split(&apos; &apos;);</div><div class="line">      this.name.first = split[0];</div><div class="line">      this.name.last = split[1];</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></li><li><p>方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Post.schema.methods.isPublished = function() &#123;</div><div class="line">    return this.state == &apos;published&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li><li><p>静态域</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></li><li><p>前置钩子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Post.schema.pre(&apos;save&apos;, function(next) &#123;</div><div class="line">    if (this.isModified(&apos;state&apos;) &amp;&amp; this.isPublished() &amp;&amp; !this.publishedAt) &#123;</div><div class="line">        this.publishedAt = new Date();</div><div class="line">    &#125;</div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li><li><p>后置钩子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></li></ul><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>数据类型    域类型<br>String    Text<br>Number    Number<br>Date    DateTime<br>Boolean    Boolean</p><h3 id="域参数（增加域时可以使用的参数）"><a href="#域参数（增加域时可以使用的参数）" class="headerlink" title="域参数（增加域时可以使用的参数）"></a>域参数（增加域时可以使用的参数）</h3><p>label String    每个域的标签都是由域路径生成的；设置这个参数会覆盖默认值。<br>required Boolean    在条目保存前验证这个域是有值的(还会传给mongoose并强制使用数据库索引)。<br>initial Boolean    让这个域出现在管理界面中的创建条目表单中。<br>noedit Boolean    在管理界面中将这个域渲染为只读域。<br>note String    在管理界面中跟着域显示。<br>hidden Boolean    如果设为true，则该域在管理界面中一直是隐藏域。<br>collapse Boolean    该域没有值时在管理界面中显示一个+ 添加链接。当noedit也被设为true时，该域没值时则完全隐藏。<br>dependsOn Object    只有对象中指定的路径跟条目的当前数据匹配时才会显示 你可以在每个路径上用数组对准多个值。</p><h2 id="pug"><a href="#pug" class="headerlink" title="pug"></a>pug</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="keystone" scheme="https://aoping.github.io/categories/keystone/"/>
-    
-    
-      <category term="keystone" scheme="https://aoping.github.io/tags/keystone/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node版本管理</title>
-    <link href="https://aoping.github.io/2017/10/10/node-manager/"/>
-    <id>https://aoping.github.io/2017/10/10/node-manager/</id>
-    <published>2017-10-10T06:22:47.000Z</published>
-    <updated>2017-10-17T15:01:42.622Z</updated>
-    
-    <content type="html"><![CDATA[<p>Node版本管理器有nvm n nvmw nvm-windows等，但这些对操作系统都有要求，下面根据不同操作系统简单介绍一下</p><a id="more"></a><h1 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h1><h2 id="nvmw"><a href="#nvmw" class="headerlink" title="nvmw"></a>nvmw</h2><p><a href="https://github.com/hakobera/nvmw" target="_blank" rel="external">https://github.com/hakobera/nvmw</a></p><h2 id="nvm-windows-推荐"><a href="#nvm-windows-推荐" class="headerlink" title="nvm-windows(推荐)"></a>nvm-windows(推荐)</h2><p>参考链接：<a href="https://littlebaozi.github.io/2017/08/30/nvm-nodejs/" target="_blank" rel="external">https://littlebaozi.github.io/2017/08/30/nvm-nodejs/</a><br>github地址：<a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">https://github.com/coreybutler/nvm-windows</a></p><h3 id="安装nvm-windows"><a href="#安装nvm-windows" class="headerlink" title="安装nvm-windows"></a>安装nvm-windows</h3><ul><li>如果之前安装过node, 需要删除相应的安装目录，避免有影响<br>主要检查以下两个目录</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:\Program Files\nodejs</div><div class="line">C:\Users&lt;user&gt;\AppData\Roaming\npm</div></pre></td></tr></table></figure><ul><li>下载发布包<a href="https://github.com/coreybutler/nvm-windows/releases，下载nvm-setup.zip，解压后点击exe文件，进行安装即可" target="_blank" rel="external">https://github.com/coreybutler/nvm-windows/releases，下载nvm-setup.zip，解压后点击exe文件，进行安装即可</a></li></ul><h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p>如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install 6.11.4</div></pre></td></tr></table></figure></p><h3 id="使用相应版本的node"><a href="#使用相应版本的node" class="headerlink" title="使用相应版本的node"></a>使用相应版本的node</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use 6.11.4</div></pre></td></tr></table></figure><h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nvm list  查看安装的node版本</div><div class="line">nvm uninstall &lt;version&gt; 卸载</div><div class="line">nvm version 查看nvm的版本</div></pre></td></tr></table></figure><h3 id="配置npm"><a href="#配置npm" class="headerlink" title="配置npm"></a>配置npm</h3><ul><li>执行命令，执行成功在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\&lt;你的用户名&gt;</div></pre></td></tr></table></figure></li></ul><p>下会生成.npmrc文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm config set prefix &quot;G:\software\npm-global&quot;</div></pre></td></tr></table></figure><ul><li>再次是配置环境变量,<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">设置——系统——关于——系统信息——高级程序设置——环境变量——xxx用户的变量</div></pre></td></tr></table></figure></li></ul><p>如果你之前安装过npm, 则将<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\你的用户名\AppData\Roaming\npm</div></pre></td></tr></table></figure></p><p> 改为<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">G:\software\npm-global</div></pre></td></tr></table></figure></p><p>反之直接添加PATH<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">G:\software\npm-global</div></pre></td></tr></table></figure></p><h3 id="安装nrm"><a href="#安装nrm" class="headerlink" title="安装nrm"></a>安装nrm</h3><p>nrm（npm registry manager ）npm的镜像源管理工具   <a href="https://github.com/Pana/nrm" target="_blank" rel="external">https://github.com/Pana/nrm</a></p><ul><li><p>安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g nrm</div></pre></td></tr></table></figure></li><li><p>其他命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nrm ls    展示所有可切换的镜像地址</div><div class="line">nrm use cnpm    切换到cnpm</div></pre></td></tr></table></figure></li></ul><h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><p>如果你安装了nrm，可以忽略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</div><div class="line">npm install -g cnpm --registry=http://r.cnpmjs.org</div></pre></td></tr></table></figure></p><h3 id="全局安装模块"><a href="#全局安装模块" class="headerlink" title="全局安装模块"></a>全局安装模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>任何全局npm模块在您已安装的各种版本的node.js之间不共享</p><h1 id="linux-ubuntu"><a href="#linux-ubuntu" class="headerlink" title="linux(ubuntu)"></a>linux(ubuntu)</h1><h2 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h2><p>install using curl</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash</div></pre></td></tr></table></figure><p>install using wget</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.20.0/install.sh | bash</div></pre></td></tr></table></figure><h2 id="n"><a href="#n" class="headerlink" title="n"></a>n</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Node版本管理器有nvm n nvmw nvm-windows等，但这些对操作系统都有要求，下面根据不同操作系统简单介绍一下&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="node" scheme="https://aoping.github.io/categories/node/"/>
-    
-    
-      <category term="node" scheme="https://aoping.github.io/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>weex</title>
-    <link href="https://aoping.github.io/2017/10/08/weex/"/>
-    <id>https://aoping.github.io/2017/10/08/weex/</id>
-    <published>2017-10-08T03:35:28.000Z</published>
-    <updated>2017-10-14T14:45:14.848Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="ui"><a href="#ui" class="headerlink" title="ui"></a>ui</h2><p>weex-ui <a href="https://github.com/alibaba/weex-ui" target="_blank" rel="external">https://github.com/alibaba/weex-ui</a></p><p>bui <a href="http://dev.bingocc.com/buiweex/docs/" target="_blank" rel="external">http://dev.bingocc.com/buiweex/docs/</a></p><a id="more"></a><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>nat <a href="http://natjs.com/" target="_blank" rel="external">http://natjs.com/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;ui&quot;&gt;&lt;a href=&quot;#ui&quot; class=&quot;headerlink&quot; title=&quot;ui&quot;&gt;&lt;/a&gt;ui&lt;/h2&gt;&lt;p&gt;weex-ui &lt;a href=&quot;https://github.com/alibaba/weex-ui&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/alibaba/weex-ui&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;bui &lt;a href=&quot;http://dev.bingocc.com/buiweex/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://dev.bingocc.com/buiweex/docs/&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="weex" scheme="https://aoping.github.io/categories/weex/"/>
-    
-    
-      <category term="weex" scheme="https://aoping.github.io/tags/weex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>倍速播放器</title>
-    <link href="https://aoping.github.io/2017/10/07/software-player/"/>
-    <id>https://aoping.github.io/2017/10/07/software-player/</id>
-    <published>2017-10-07T02:03:41.000Z</published>
-    <updated>2017-10-14T14:45:14.844Z</updated>
-    
-    <content type="html"><![CDATA[<p>相信大家在看视频学习的时候一定有多倍速播放的需求，今天就给大家推荐几款播放器</p><a id="more"></a><h2 id="potplayer"><a href="#potplayer" class="headerlink" title="potplayer"></a>potplayer</h2><p>windows下推荐使用</p><h2 id="smplayer"><a href="#smplayer" class="headerlink" title="smplayer"></a>smplayer</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Linux下推荐使用</p><h3 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h3><p><a href="http://www.smplayer.info/en/downloads" target="_blank" rel="external">http://www.smplayer.info/en/downloads</a></p><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>不要散乱地记忆smplayer的快捷键. 要分类别的来记忆快捷键: 主要有audio, play, video:</p><p>audio, 是设置声音的快捷键:<br>9, 0, 分别增加/减小音量, m表示mute.</p><p>play: 设置设置放映的快捷键:<br>主要有: left/right: 10s为单位; up/down: 1min; pageup/pgdn: 10min ; 播放速度的快捷键: [, ], {, }, 分别是正负0.1 , 50%和2倍. 暂停: space, 如果创建了playlists, 可以用&lt; 和 &gt; 来进行上一首/下一首切换.</p><p>video, 是指窗口大小/视频本身的大小 设置:<br>窗口大小: f: 全屏, ctrl+1, 100%, ctrl+2, 200%, ctrl+d则是双倍和原始大小进行切换. (这个ctrl_1, 是一个固定大小, 就是不管你把窗口拖放到什么尺寸, 只要按crl+1, 都会显示到那个固定的大小)<br>视频本身的大小: e: 放大, w缩小. e是指expand, 扩展, 放大, w: 为什么是缩小呢? 因为根据&gt; &lt;, (), [], {} , 这些成对的, 紧挨着的按键的布局来看. 左边的表示缩小, 右边的表示放大.</p><p>s: 是截屏screenshots.</p><p>不定期更新～～</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>播放器smplayer的各种键盘快捷键 <a href="http://www.cnblogs.com/bkylee/p/6795295.html" target="_blank" rel="external">http://www.cnblogs.com/bkylee/p/6795295.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;相信大家在看视频学习的时候一定有多倍速播放的需求，今天就给大家推荐几款播放器&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="软件" scheme="https://aoping.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="播放器 倍速" scheme="https://aoping.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8-%E5%80%8D%E9%80%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代理 翻墙软件</title>
-    <link href="https://aoping.github.io/2017/10/07/software-proxy/"/>
-    <id>https://aoping.github.io/2017/10/07/software-proxy/</id>
-    <published>2017-10-07T01:22:15.000Z</published>
-    <updated>2017-10-14T14:45:14.846Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><ul><li>ngrok</li></ul><p>地址： <a href="https://www.ngrok.cc/" target="_blank" rel="external">https://www.ngrok.cc/</a></p><ul><li>tunnel.mobi</li></ul><ul><li>utralhook</li></ul><ul><li>qq浏览器 微信插件（only mac and win）</li></ul><h1 id="翻墙"><a href="#翻墙" class="headerlink" title="翻墙"></a>翻墙</h1><ul><li>蓝灯（Lantern）</li></ul><p><a href="https://github.com/getlantern/lantern" target="_blank" rel="external">https://github.com/getlantern/lantern</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;代理&quot;&gt;&lt;a href=&quot;#代理&quot; class=&quot;headerlink&quot; title=&quot;代理&quot;&gt;&lt;/a&gt;代理&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;ngrok&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;地址： &lt;a href=&quot;https://www.ngrok.cc/&quot; target=&quot;
-      
-    
-    </summary>
-    
-      <category term="软件" scheme="https://aoping.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="软件 代理 翻墙" scheme="https://aoping.github.io/tags/%E8%BD%AF%E4%BB%B6-%E4%BB%A3%E7%90%86-%E7%BF%BB%E5%A2%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu常用软件安装</title>
-    <link href="https://aoping.github.io/2017/10/06/ubuntu-software/"/>
-    <id>https://aoping.github.io/2017/10/06/ubuntu-software/</id>
-    <published>2017-10-06T10:02:45.000Z</published>
-    <updated>2017-11-01T16:53:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/shidaping/article/details/52218278" target="_blank" rel="external">http://blog.csdn.net/shidaping/article/details/52218278</a><br><a href="http://blog.csdn.net/tao_627/article/details/52635691" target="_blank" rel="external">http://blog.csdn.net/tao_627/article/details/52635691</a></p><p>安装微信<br><a href="http://blog.csdn.net/ch593030323/article/details/53571807" target="_blank" rel="external">http://blog.csdn.net/ch593030323/article/details/53571807</a></p><a id="more"></a><p>安装qq(2017版)<br><a href="http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/xs18952904/article/details/74931089?locationNum=2&amp;fps=1</a><br><a href="http://blog.csdn.net/ysy950803/article/details/52958538" target="_blank" rel="external">http://blog.csdn.net/ysy950803/article/details/52958538</a></p><p>安装迅雷<br><a href="http://blog.csdn.net/zhuyucheng123/article/details/51147550" target="_blank" rel="external">http://blog.csdn.net/zhuyucheng123/article/details/51147550</a></p><p>登录激活就可以使用了</p><p>安装mongodb<br><a href="http://blog.csdn.net/flyfish111222/article/details/51886787" target="_blank" rel="external">http://blog.csdn.net/flyfish111222/article/details/51886787</a><br><a href="http://www.cnblogs.com/weschen/p/7395667.html（选择此方法）" target="_blank" rel="external">http://www.cnblogs.com/weschen/p/7395667.html（选择此方法）</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mongodb // 安装mongodb</div><div class="line">service mongodb start</div><div class="line">service mongodb stop</div></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo systemctl enable mongod    //设置开机启动mongodb服务</div><div class="line">sudo service mongod start   //启动服务</div><div class="line">systemctl status mongod</div></pre></td></tr></table></figure><ul><li>MongoError: Authentication failed.<br><a href="http://cnodejs.org/topic/5617d80941ceb58c4f8e6e37" target="_blank" rel="external">http://cnodejs.org/topic/5617d80941ceb58c4f8e6e37</a></li></ul><p>安装robomongo<br><a href="http://blog.csdn.net/cristal_tina/article/details/53634209" target="_blank" rel="external">http://blog.csdn.net/cristal_tina/article/details/53634209</a></p><p>安装gitbook<br><a href="http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1" target="_blank" rel="external">http://blog.csdn.net/qq_26437925/article/details/52959733?locationNum=8&amp;fps=1</a></p><p>安装wps<br><strong>下载地址</strong><br> <a href="http://wps-community.org/download.html" target="_blank" rel="external">http://wps-community.org/download.html</a><br><strong>字体缺失下载地址</strong></p><p>启动WPS for Linux后，出现提示”系统缺失字体” 。</p><p>出现提示的原因是因为WPS for Linux没有自带windows的字体，只要在Linux系统中加载字体即可。</p><p>具体操作步骤如下：</p><ol><li>下载缺失的字体文件，然后复制到Linux系统中的/usr/share/fonts文件夹中。</li></ol><p>国外下载地址：<a href="https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip" target="_blank" rel="external">https://www.dropbox.com/s/lfy4hvq95ilwyw5/wps_symbol_fonts.zip</a></p><p>国内下载地址：<a href="https://pan.baidu.com/s/1eS6xIzo" target="_blank" rel="external">https://pan.baidu.com/s/1eS6xIzo</a></p><p>（上述数据来源网络，侵删）</p><p>下载完成后，解压并进入目录中，继续执行：</p><p>sudo cp * /usr/share/fonts</p><ol><li>执行以下命令,生成字体的索引信息：</li></ol><p>sudo mkfontscale</p><p>sudo mkfontdir</p><ol><li>运行fc-cache命令更新字体缓存。</li></ol><p>sudo fc-cache</p><ol><li>重启wps即可，字体缺失的提示不再出现。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/shidaping/article/details/52218278&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/shidaping/article/details/52218278&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/tao_627/article/details/52635691&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/tao_627/article/details/52635691&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;安装微信&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/ch593030323/article/details/53571807&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/ch593030323/article/details/53571807&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="ubuntu" scheme="https://aoping.github.io/categories/ubuntu/"/>
-    
-    
-      <category term="ubuntu 软件安装" scheme="https://aoping.github.io/tags/ubuntu-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     
   </entry>
   
