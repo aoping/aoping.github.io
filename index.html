@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/23/build-tools/">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/25/git-flow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="敖平">
@@ -283,7 +283,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/23/build-tools/" itemprop="url">web构建</a></h1>
+                <a class="post-title-link" href="/2017/12/25/git-flow/" itemprop="url">git</a></h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T10:09:10+08:00">
-                2017-12-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T15:35:28+08:00">
+                2017-12-25
               </time>
             
 
@@ -313,7 +313,7 @@
 
           
           
-             <span id="/2017/12/23/build-tools/" class="leancloud_visitors" data-flag-title="web构建">
+             <span id="/2017/12/25/git-flow/" class="leancloud_visitors" data-flag-title="git">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -346,61 +346,615 @@
       
         
           
-            <h1 id="构建目的"><a href="#构建目的" class="headerlink" title="构建目的"></a>构建目的</h1><p>压缩<br>优化<br>缓存<br>分离js css</p>
-<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
-<li>一切皆文件</li>
-<li></li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack webpack-dev-server -g <span class="comment">// 全局安装</span></div><div class="line">npm install webpack webpack-dev-server --save-dev <span class="comment">// 局部安装</span></div></pre></td></tr></table></figure>
-<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><p>webpack配置文件默认名为webpack.config.js<br>在命令行输入webpack/webpack-dev-server，会在命令执行目录下找webpack.config.js<br>如果webpack配置文件名字不为webpack.config.js，或不在命令执行目录下，可以输入<figure class="highlight plain"><figcaption><span>--config ./build/webpack.dev.js ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 配置文件</div><div class="line">### context</div><div class="line">context说明:</div><div class="line">1. 它是一个绝对路径，所以要用到path.resolve函数</div><div class="line">2. 不设表示起点目录是当前目录</div><div class="line">3. 入口文件是在context指定的目录为基础，再往下找</div><div class="line"></div><div class="line">```js</div><div class="line">context: path.resolve(__dirname,&apos;src&apos;)</div></pre></td></tr></table></figure></p>
-<h3 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h3><ul>
-<li>可为string object array<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 多入口</span></div><div class="line">entry: &#123;</div><div class="line">    index: <span class="string">'./src/index.js'</span>,</div><div class="line">    main: <span class="string">'./src/main.js'</span></div><div class="line">&#125;</div><div class="line">entry: [<span class="string">'./src/index.js'</span>,<span class="string">'./src/main.js'</span>]</div><div class="line"><span class="comment">// 或单入口</span></div><div class="line">entry: <span class="string">'./src/index.js'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><ul>
-<li>filename必须</li>
-<li>filename可以用[name] | [id] | [hash] | [chunkhash]来命名<br>  [name] 与entry中的key相同<br>  [id] 与entry中顺序相同，从0开始<br>  [hash] 每次都不同<br>  [chunkhash] 文件变化才会改变</li>
-<li>path需是绝对路径，不指定时表示当前目录<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">output: &#123;</div><div class="line">    filename: <span class="string">'[name].js'</span>,</div><div class="line">    path: path.resolve(<span class="string">'./build'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">    rules: [</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,</div><div class="line">            use: [</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'style-loader'</span>&#125;,</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'css-loader'</span>&#125;,</div><div class="line">                &#123;<span class="attr">loader</span>: <span class="string">'less-loader'</span>&#125;</div><div class="line">            ],</div><div class="line">            exclude: <span class="regexp">/node_modules/</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.css$/</span>,</div><div class="line">            loader: <span class="string">'style!css!sass'</span>,</div><div class="line">            exclude: <span class="regexp">/node_modules/</span></div><div class="line">        &#125;,</div><div class="line">        &#123;</div><div class="line">            test: <span class="regexp">/\.vue$/</span>,</div><div class="line">            loader: <span class="string">'vue-loader'</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>loader从右到左加载</li>
-</ul>
-<h4 id="常用loader"><a href="#常用loader" class="headerlink" title="常用loader"></a>常用loader</h4><p>babel-loader： 让下一代的js文件转换成现代浏览器能够支持的JS文件。<br>babel有些复杂，所以大多数都会新建一个.babelrc进行配置<br>css-loader,style-loader:两个建议配合使用，用来解析css文件，能够解释@import,url()如果需要解析less就在后面加一个less-loader<br>file-loader: 生成的文件名就是文件内容的MD5哈希值并会保留所引用资源的原始扩展名<br>url-loader: 功能类似 file-loader,但是文件大小低于指定的限制时，可以返回一个DataURL事实上</p>
-<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><h4 id="常用plugin"><a href="#常用plugin" class="headerlink" title="常用plugin"></a>常用plugin</h4><ul>
-<li><p>ExtractTextWebpackPlugin: 它会将入口中引用css文件，都打包都独立的css文件中，而不是内嵌在js打包文件中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>)</div><div class="line"><span class="keyword">var</span> lessRules = &#123;</div><div class="line">    use: [</div><div class="line">        &#123;<span class="attr">loader</span>: <span class="string">'css-loader'</span>&#125;,</div><div class="line">        &#123;<span class="attr">loader</span>: <span class="string">'less-loader'</span>&#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ... </span></div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        rules: [</div><div class="line">            <span class="comment">// ...</span></div><div class="line">            &#123;<span class="attr">test</span>: <span class="regexp">/\.less$/</span>, <span class="attr">use</span>: ExtractTextPlugin.extract(lessRules)&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'main.css'</span>)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>HtmlWebpackPlugin: 依据一个简单的index.html模版，生成一个自动引用你打包后的js文件的新index.html</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> HTMLWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> HTMLWebpackPlugin()</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>HotModuleReplacementPlugin: 它允许你在修改组件代码时，自动刷新实时预览修改后的结果注意永远不要在生产环境中使用HMR。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</div></pre></td></tr></table></figure>
-</li>
-<li><p>OccurenceOrderPlugin: 为组件分配ID,通过这个插件webpack可以分析和优先考虑使用最多 的模块，然后为他们分配最小的ID</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin()</div></pre></td></tr></table></figure>
-</li>
-<li><p>UglifyJsPlugin: 压缩代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="区分环境"><a href="#区分环境" class="headerlink" title="区分环境"></a>区分环境</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package.json</span></div><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"NODE_ENV=development webpack-dev-server"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"NODE_ENV=production webpack"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ENV = process.env.NODE_ENV</div><div class="line"><span class="keyword">var</span> baseConfig = &#123;</div><div class="line">    <span class="comment">// ... </span></div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line">            <span class="string">'process.env.NODE_ENV'</span>: <span class="built_in">JSON</span>.stringify(ENV)</div><div class="line">        &#125;)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><h2 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h2><ul>
-<li><p>命令行<br>｀｀｀<br>webpack<br>webpack-dev-server<br>｀｀｀</p>
-</li>
-<li><p>使用webpack依赖包</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// build.js</span></div><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</div><div class="line">webpack(webpackConfig, (err, stats) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'已打包好了，我们做点别的事'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 执行</span></div><div class="line">node build.js</div></pre></td></tr></table></figure>
-<ul>
-<li>使用webpack编译器<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);</div><div class="line"><span class="keyword">const</span> compiler = webpack(webpackConfig)</div><div class="line">compiler.run( <span class="function">(<span class="params">err, stats</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'已打包好了，我们做点别的事...'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 编译器运行比上面要快些，但它没有包括watch部分，没有监视，只是编译</span></div></pre></td></tr></table></figure>
-</li>
+            <h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a href="http://www.yiibai.com/git/" target="_blank" rel="external">http://www.yiibai.com/git/</a></p>
+<h2 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h2><h3 id="git-pull-lt-远程主机名-gt-lt-远程分支名-gt-lt-本地分支名-gt"><a href="#git-pull-lt-远程主机名-gt-lt-远程分支名-gt-lt-本地分支名-gt" class="headerlink" title="git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;"></a>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</h3><h3 id="git-push-远程仓库别名-推送分支"><a href="#git-push-远程仓库别名-推送分支" class="headerlink" title="git push 远程仓库别名 推送分支"></a>git push 远程仓库别名 推送分支</h3><p>推送本地分支到远程仓库，这2个参数缺省分别就是 origin 、 当前分支（一般为master）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git push origin master</div><div class="line">可以简写成</div><div class="line">git push</div></pre></td></tr></table></figure></p>
+<h4 id="options"><a href="#options" class="headerlink" title="options"></a>options</h4><p>-u 设置本地分支去跟踪远程对应的分支</p>
+<h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><p>rebase操作过程是把本地提交一次一个地迁移到更新了的中央仓库master分支之上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull --rebase</div></pre></td></tr></table></figure></p>
+<p>如果有冲突，用git status查看，解决冲突后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add &lt;some-file&gt; </div><div class="line">git rebase --continue</div></pre></td></tr></table></figure></p>
+<p>取消rebase<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase --abort</div></pre></td></tr></table></figure></p>
+<h3 id="git-patch"><a href="#git-patch" class="headerlink" title="git patch"></a>git patch</h3><p>git diff生成patch文件<br>或者pull request生成的patch文件（在连接上加上.patch即可知道链接）<br>vscode安装git patch插件可以生成文件</p>
+<p>参考：<a href="http://www.ruanyifeng.com/blog/2017/07/pull_request.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2017/07/pull_request.html</a></p>
+<h2 id="git流程"><a href="#git流程" class="headerlink" title="git流程"></a>git流程</h2><p>参考：<br><a href="https://github.com/oldratlee/translations/tree/master/git-workflows-and-tutorials" target="_blank" rel="external">https://github.com/oldratlee/translations/tree/master/git-workflows-and-tutorials</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/25/node-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敖平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AoPing's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/25/node-server/" itemprop="url">node项目服务器部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T09:50:21+08:00">
+                2017-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/25/node-server/" class="leancloud_visitors" data-flag-title="node项目服务器部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>pm2 nodejs进程管理工具</li>
+<li>nodemon 监视文件变动，自动刷新服务器</li>
+<li>nginx</li>
+<li>docker</li>
+<li>mongodb</li>
 </ul>
 
           
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/25/vue-index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敖平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AoPing's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/25/vue-index/" itemprop="url">vue实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T09:49:35+08:00">
+                2017-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/25/vue-index/" class="leancloud_visitors" data-flag-title="vue实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="vue最佳实践"><a href="#vue最佳实践" class="headerlink" title="vue最佳实践"></a>vue最佳实践</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/24/css-index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敖平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AoPing's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/24/css-index/" itemprop="url">css之css module</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T16:11:48+08:00">
+                2017-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/24/css-index/" class="leancloud_visitors" data-flag-title="css之css module">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/12/23/build-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="敖平">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AoPing's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/23/build-tools/" itemprop="url">web构建——webpack详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T10:09:10+08:00">
+                2017-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/23/build-tools/" class="leancloud_visitors" data-flag-title="web构建——webpack详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="构建目的"><a href="#构建目的" class="headerlink" title="构建目的"></a>构建目的</h1><p>压缩<br>优化<br>缓存<br>分离js css</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/23/build-tools/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -893,6 +1447,7 @@
 <li>官网 <a href="https://www.realvnc.com/en/" target="_blank" rel="external">https://www.realvnc.com/en/</a></li>
 </ul>
 <h3 id="teamviewer"><a href="#teamviewer" class="headerlink" title="teamviewer"></a>teamviewer</h3><h3 id="ppt"><a href="#ppt" class="headerlink" title="ppt"></a>ppt</h3><p><a href="http://www.slideshare.net/(需翻墙" target="_blank" rel="external">http://www.slideshare.net/(需翻墙</a>)</p>
+<h3 id="RescueTime"><a href="#RescueTime" class="headerlink" title="RescueTime"></a>RescueTime</h3><p>一款著名的跨平台行为追踪时间记录服务<br><a href="https://www.rescuetime.com" target="_blank" rel="external">https://www.rescuetime.com</a></p>
 
           
         
@@ -1236,610 +1791,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/11/05/learn-list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="敖平">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AoPing's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/05/learn-list/" itemprop="url">学习清单</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T15:01:37+08:00">
-                2017-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/个人/" itemprop="url" rel="index">
-                    <span itemprop="name">个人</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/05/learn-list/" class="leancloud_visitors" data-flag-title="学习清单">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>makefile  <a href="http://blog.csdn.net/ruglcc/article/details/7814546/" target="_blank" rel="external">http://blog.csdn.net/ruglcc/article/details/7814546/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/11/01/notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="敖平">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AoPing's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/01/notes/" itemprop="url">笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-01T10:57:49+08:00">
-                2017-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/11/01/notes/" class="leancloud_visitors" data-flag-title="笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>控制台输出到txt<br>C:\你输入的命令 &gt;output.txt</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/10/31/node-npm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="敖平">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AoPing's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/31/node-npm/" itemprop="url">node-npm</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T14:58:14+08:00">
-                2017-10-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/31/node-npm/" class="leancloud_visitors" data-flag-title="node-npm">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="常用依赖"><a href="#常用依赖" class="headerlink" title="常用依赖"></a>常用依赖</h2><ul>
-<li>把变量加载入process.env dotenv</li>
-<li>控制台颜色     colors  chalks</li>
-<li>路径    path</li>
-<li>日志    log4js</li>
-<li>http request logger   morgan</li>
-<li>跨站请求伪造    csurf</li>
-<li>压缩    compression</li>
-<li>文件上传  connect-busboy</li>
-<li>错误处理  errorhandler</li>
-<li>跨域    cors</li>
-<li>处理回调  eventproxy async promise bluebird</li>
-<li>事件驱动  eventproxy</li>
-<li>请求  request</li>
-</ul>
-<h2 id="流处理"><a href="#流处理" class="headerlink" title="流处理"></a>流处理</h2><p>through2<br>concat-stream</p>
-<h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><ul>
-<li>容量转换  bytes</li>
-<li>日期转换  monents</li>
-<li>xml   xmlbuilder</li>
-<li>表单验证  validator</li>
-<li>加密    bcryptjs utility</li>
-<li>node-uuid</li>
-</ul>
-<h2 id="express常用依赖"><a href="#express常用依赖" class="headerlink" title="express常用依赖"></a>express常用依赖</h2><ul>
-<li>session   express-session</li>
-<li>RedisStore    connect-redis</li>
-<li>redis client  ioredis</li>
-</ul>
-<h2 id="安装失败"><a href="#安装失败" class="headerlink" title="安装失败"></a>安装失败</h2><h3 id="安装node-sass失败"><a href="#安装node-sass失败" class="headerlink" title="安装node-sass失败"></a>安装node-sass失败</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">用cnpm install重装</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aoping.github.io/2017/10/24/js-utils/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="敖平">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AoPing's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/24/js-utils/" itemprop="url">js-utils</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T00:16:35+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/24/js-utils/" class="leancloud_visitors" data-flag-title="js-utils">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * js常用工具类</span></div><div class="line"><span class="comment"> */</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 方法作用：【格式化时间】</span></div><div class="line"><span class="comment"> * 使用方法</span></div><div class="line"><span class="comment"> * 示例：</span></div><div class="line"><span class="comment"> *      使用方式一：</span></div><div class="line"><span class="comment"> *      var now = new Date();</span></div><div class="line"><span class="comment"> *      var nowStr = now.dateFormat("yyyy-MM-dd hh:mm:ss");</span></div><div class="line"><span class="comment"> *      使用方式二：</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyy年MM月dd日");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("MM/dd/yyyy");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyyMMdd");</span></div><div class="line"><span class="comment"> *      new Date().dateFormat("yyyy-MM-dd hh:mm:ss");</span></div><div class="line"><span class="comment"> * @param format &#123;date&#125; 传入要格式化的日期类型</span></div><div class="line"><span class="comment"> * @returns &#123;2015-01-31 16:30:00&#125;</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="built_in">Date</span>.prototype.dateFormat = <span class="function"><span class="keyword">function</span> (<span class="params">format</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> o = &#123;</div><div class="line">        <span class="string">"M+"</span> : <span class="keyword">this</span>.getMonth()+<span class="number">1</span>, <span class="comment">//month</span></div><div class="line">        <span class="string">"d+"</span> : <span class="keyword">this</span>.getDate(), <span class="comment">//day</span></div><div class="line">        <span class="string">"h+"</span> : <span class="keyword">this</span>.getHours(), <span class="comment">//hour</span></div><div class="line">        <span class="string">"m+"</span> : <span class="keyword">this</span>.getMinutes(), <span class="comment">//minute</span></div><div class="line">        <span class="string">"s+"</span> : <span class="keyword">this</span>.getSeconds(), <span class="comment">//second</span></div><div class="line">        <span class="string">"q+"</span> : <span class="built_in">Math</span>.floor((<span class="keyword">this</span>.getMonth()+<span class="number">3</span>)/<span class="number">3</span>), <span class="comment">//quarter</span></div><div class="line">        <span class="string">"S"</span> : <span class="keyword">this</span>.getMilliseconds() <span class="comment">//millisecond</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(<span class="regexp">/(y+)/</span>.test(format)) &#123;</div><div class="line">        format = format.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, (<span class="keyword">this</span>.getFullYear()+<span class="string">""</span>).substr(<span class="number">4</span> - <span class="built_in">RegExp</span>.$<span class="number">1.</span>length));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> o) &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"("</span>+ k +<span class="string">")"</span>).test(format)) &#123;</div><div class="line">            format = format.replace(<span class="built_in">RegExp</span>.$<span class="number">1</span>, <span class="built_in">RegExp</span>.$<span class="number">1.</span>length==<span class="number">1</span> ? o[k] : (<span class="string">"00"</span>+ o[k]).substr((<span class="string">""</span>+ o[k]).length));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> format;</div><div class="line">&#125;</div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           日期时间工具类                            *</span></div><div class="line"><span class="comment"> *                     注：调用方式，deteUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> dateUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【取传入日期是星期几】</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.nowFewWeeks(new Date());</span></div><div class="line"><span class="comment">     * @param date&#123;date&#125; 传入日期类型</span></div><div class="line"><span class="comment">     * @returns &#123;星期四，...&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    nowFewWeeks:<span class="function"><span class="keyword">function</span>(<span class="params">date</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(date <span class="keyword">instanceof</span> <span class="built_in">Date</span>)&#123;</div><div class="line">            <span class="keyword">var</span> dayNames = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"星期天"</span>,<span class="string">"星期一"</span>,<span class="string">"星期二"</span>,<span class="string">"星期三"</span>,<span class="string">"星期四"</span>,<span class="string">"星期五"</span>,<span class="string">"星期六"</span>);</div><div class="line">            <span class="keyword">return</span> dayNames[date.getDay()];</div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Param error,date type!"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【字符串转换成日期】</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.strTurnDate("2010-01-01");</span></div><div class="line"><span class="comment">     * @param str &#123;String&#125;字符串格式的日期，传入格式：yyyy-mm-dd(2015-01-31)</span></div><div class="line"><span class="comment">     * @return &#123;Date&#125;由字符串转换成的日期</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    strTurnDate:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span>   re   =   <span class="regexp">/^(\d&#123;4&#125;)\S(\d&#123;1,2&#125;)\S(\d&#123;1,2&#125;)$/</span>;</div><div class="line">        <span class="keyword">var</span>   dt;</div><div class="line">        <span class="keyword">if</span>   (re.test(str))&#123;</div><div class="line">            dt   =   <span class="keyword">new</span>   <span class="built_in">Date</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>,<span class="built_in">RegExp</span>.$<span class="number">2</span>   -   <span class="number">1</span>,<span class="built_in">RegExp</span>.$<span class="number">3</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dt;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法作用：【计算2个日期之间的天数】</span></div><div class="line"><span class="comment">     * 传入格式：yyyy-mm-dd(2015-01-31)</span></div><div class="line"><span class="comment">     * 使用方法：dateUtil.dayMinus(startDate,endDate);</span></div><div class="line"><span class="comment">     * @startDate &#123;Date&#125;起始日期</span></div><div class="line"><span class="comment">     * @endDate &#123;Date&#125;结束日期</span></div><div class="line"><span class="comment">     * @return endDate - startDate的天数差</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    dayMinus:<span class="function"><span class="keyword">function</span>(<span class="params">startDate, endDate</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(startDate <span class="keyword">instanceof</span> <span class="built_in">Date</span> &amp;&amp; endDate <span class="keyword">instanceof</span> <span class="built_in">Date</span>)&#123;</div><div class="line">            <span class="keyword">var</span> days = <span class="built_in">Math</span>.floor((endDate-startDate)/(<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>));</div><div class="line">            <span class="keyword">return</span> days;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"Param error,date type!"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           加载工具类                                *</span></div><div class="line"><span class="comment"> *                     注：调用方式，loadUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> loadUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 方法说明：【动态加载js文件css文件】</span></div><div class="line"><span class="comment">     * 使用方法：loadUtil.loadjscssfile("http://libs.baidu.com/jquery/1.9.1/jquery.js","js")</span></div><div class="line"><span class="comment">     * @param fileurl 文件路径，</span></div><div class="line"><span class="comment">     * @param filetype 文件类型，支持传入类型，js、css</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    loadjscssfile:<span class="function"><span class="keyword">function</span>(<span class="params">fileurl,filetype</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(filetype == <span class="string">"js"</span>)&#123;</div><div class="line">            <span class="keyword">var</span> fileref = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"type"</span>,<span class="string">"text/javascript"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"src"</span>,fileurl);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(filetype == <span class="string">"css"</span>)&#123;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> fileref = <span class="built_in">document</span>.createElement(<span class="string">'link'</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"rel"</span>,<span class="string">"stylesheet"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"type"</span>,<span class="string">"text/css"</span>);</div><div class="line">            fileref.setAttribute(<span class="string">"href"</span>,fileurl);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> fileref != <span class="string">"undefined"</span>)&#123;</div><div class="line">            <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(fileref);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            alert(<span class="string">"loadjscssfile method error!"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/***********************************************************************</span></div><div class="line"><span class="comment"> *                           字符串操作工具类                          *</span></div><div class="line"><span class="comment"> *                     注：调用方式，strUtil.方法名                   *</span></div><div class="line"><span class="comment"> * ********************************************************************/</span></div><div class="line"><span class="keyword">var</span> strUtil = &#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 判断字符串是否为空</span></div><div class="line"><span class="comment">     * @param str 传入的字符串</span></div><div class="line"><span class="comment">     * @returns &#123;&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEmpty:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str != <span class="literal">null</span> &amp;&amp; str.length &gt; <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 判断两个字符串子否相同</span></div><div class="line"><span class="comment">     * @param str1</span></div><div class="line"><span class="comment">     * @param str2</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEquals:<span class="function"><span class="keyword">function</span>(<span class="params">str1,str2</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str1==str2)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * 忽略大小写判断字符串是否相同</span></div><div class="line"><span class="comment">     * @param str1</span></div><div class="line"><span class="comment">     * @param str2</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isEqualsIgnorecase:<span class="function"><span class="keyword">function</span>(<span class="params">str1,str2</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(str1.toUpperCase() == str2.toUpperCase())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 判断是否是数字</span></div><div class="line"><span class="comment">     * @param value</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isNum:<span class="function"><span class="keyword">function</span> (<span class="params">value</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>( value != <span class="literal">null</span> &amp;&amp; value.length&gt;<span class="number">0</span> &amp;&amp; <span class="built_in">isNaN</span>(value) == <span class="literal">false</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 判断是否是中文</span></div><div class="line"><span class="comment">     * @param str</span></div><div class="line"><span class="comment">     * @returns &#123;Boolean&#125;</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    isChine:<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="regexp">/^([u4E00-u9FA5]|[uFE30-uFFA0])*$/</span>;</div><div class="line">        <span class="keyword">if</span>(reg.test(str))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1888,7 +1844,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1899,7 +1855,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1910,7 +1866,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
